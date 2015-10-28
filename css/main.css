@@ -53,9 +53,9 @@ a:visited {
 	padding-top: 7px;
 	background-color: white;
 	-moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    -moz-box-shadow: #78ACDB 0px 1px 4px;
-    -webkit-box-shadow: #78ACDB 0px 1px 4px;
+	-webkit-border-radius: 3px;
+	-moz-box-shadow: #78ACDB 0px 1px 4px;
+	-webkit-box-shadow: #78ACDB 0px 1px 4px;
 }
 .letter:hover {
 	background-color: #eceff7;

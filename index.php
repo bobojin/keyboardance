@@ -52,8 +52,6 @@
 	
 	mysql_close($con);
 	
-
-	
 	echo "\t<div class='footer'>Powered by Bobo Jin</div>\n";
 	echo "</html>";
 ?>
