@@ -44,12 +44,13 @@ a:visited {
 .letter {
 	float:left;
 	width: 30px;
-	height: 24px;
+	height: 23px;
 	border: 1px solid black;
 	margin-left: 2px;
 	margin-right: 2px;
+	font-family: Arial;
 	text-align: center;
-	padding-top: 6px;
+	padding-top: 7px;
 	background-color: white;
 	-moz-border-radius: 3px;
     -webkit-border-radius: 3px;
@@ -85,6 +86,9 @@ a:visited {
 }
 .text_align_center {
 	text-align: center;
+}
+.input_box {
+	/**/
 }
 
 .content_hp {
