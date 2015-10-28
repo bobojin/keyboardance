@@ -1,5 +1,8 @@
 <?php
 	
+	/*get display text*/
+	include 'display.php';
+	
 	/*output string into keyboard style*/
 	function keyboard_output($input){
 		echo "\t\t<div class='keyboard'>\n\t\t\t";
@@ -24,8 +27,8 @@
 	keyboard_output("KEYBOARDANCE");
 		
 	echo "\t\t<div class='text_align_center'><form action='search.php' method='post'>\n";
-	echo "\t\t\t<input name='keyword' type='text' placeholder='输入名称后回车' autocomplete='off'>\n";
-	echo "\t\t\t<input type='submit' value='搜索'>\n";
+	echo "\t\t\t<input name='keyword' type='text' placeholder= '" . $search_placeholder_hp_display . "' autocomplete='off'>\n";
+	echo "\t\t\t<input type='submit' value='" . $search_button_hp_display . "'>\n";
 	echo "\t\t</form></div>\n";
 	echo "\t</div></div>\n";
 	
@@ -39,7 +42,7 @@
 	$result = mysql_query("SELECT * FROM shortcut_list ORDER BY count DESC LIMIT 5");
 	
 	echo "\t<div class='content_hp'><div>\n";
-	echo "\t<div class='title_content_hp'><b>=TOP5推荐=</b></div><br />\n";
+	echo "\t<div class='title_content_hp'><b>" . $title_content_hp_display . "</b></div><br />\n";
 		
 	while($row = mysql_fetch_array($result)){
 		echo "\t\t<div class='shortcut_hp'>\n";
