@@ -24,7 +24,7 @@
 	keyboard_output("KEYBOARDANCE");
 		
 	echo "\t\t<div class='text_align_center'><form action='search.php' method='post'>\n";
-	echo "\t\t\t<input name='keyword' class='input_box' type='text' placeholder='输入名称后回车' autocomplete='off'>\n";
+	echo "\t\t\t<input name='keyword' type='text' placeholder='输入名称后回车' autocomplete='off'>\n";
 	echo "\t\t\t<input type='submit' value='搜索'>\n";
 	echo "\t\t</form></div>\n";
 	echo "\t</div></div>\n";
@@ -52,6 +52,7 @@
 	
 	mysql_close($con);
 	
-	echo "\t<div class='footer'>Powered by Bobo Jin</div>\n";
+	echo "\t<div class='footer'>Powered by <a href='import.php'>Bobo Jin</a></div>\n";
+	echo "</body>\n";
 	echo "</html>";
 ?>

@@ -87,9 +87,6 @@ a:visited {
 .text_align_center {
 	text-align: center;
 }
-.input_box {
-	/**/
-}
 
 .content_hp {
 	margin: 0 auto;
@@ -187,18 +184,18 @@ a:visited {
 .header_search {
 	height: 35px;
 	padding-top: 10px;
-	padding-left: 10px;
+	padding-left: 35px;
 	background-color: #CAD8F6;
 	margin-bottom: 10px;
 }
 .result_unit_search {
-	padding-left: 20px;
+	padding-left: 45px;
 	padding-bottom: 10px;
 }
 .return_search {
 	padding-bottom: 70px;
 }
 .return_search a {
-	padding-left: 20px;
+	padding-left: 45px;
 	text-decoration: none;
 }
