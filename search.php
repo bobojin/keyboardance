@@ -1,5 +1,7 @@
 <?php
 	
+	include 'api/connect.php';
+	
 	/*output search results*/
 	function output_result($input){
 		while($row = mysql_fetch_array($input)){
@@ -21,13 +23,6 @@
 	
 	$keyword = $_POST['keyword'];
 	$tag = $_GET['tag'];
-	
-	$con = mysql_connect("127.0.0.1","root","123456");
-	if (!$con) {
-		die('Could not connect: ' . mysql_error());
-	}
-	mysql_select_db("shortcuts", $con);
-	mysql_query("SET NAMES UTF8");
 	
 	/*save search history*/
 	mysql_query("INSERT INTO keyword_history (keyword,time) VALUES ('$keyword',NOW())");
