@@ -7,6 +7,14 @@
 	
 	<script>
 	function get_group_list(shortcut_id){
+		
+		if (shortcut_id == 0){
+			document.getElementById("shortcut_data").style.display = "none";
+			document.getElementById("shortcut_data").innerHTML = "";
+			document.getElementById("shortcut_add").style.display = "none";
+			return;
+		}
+		
 		var xmlhttp;
 		if (window.XMLHttpRequest){
 			xmlhttp = new XMLHttpRequest();
@@ -16,24 +24,30 @@
 		}
 		xmlhttp.onreadystatechange = function(){
 			if (xmlhttp.readyState == 4 && xmlhttp.status == 200){			
-				txt = "";
-				x = xmlhttp.responseXML.documentElement.getElementsByTagName("group");			
+				txt = "<tr><th>Group</th><th>Function</th><th>Key Input</th></tr>";
+				x = xmlhttp.responseXML.documentElement.getElementsByTagName("shortcut");			
 				if (x.length == 0){
-					document.getElementById("group_list").style.display = "none";
-					document.getElementById("group_list").innerHTML = "";
+					document.getElementById("shortcut_data").style.display = "";
+					document.getElementById("shortcut_data").innerHTML = "No Data";
+					document.getElementById("shortcut_add").style.display = "";
 				}
 				else{
-					document.getElementById("group_list").style.display = "";
+					document.getElementById("shortcut_data").style.display = "";
 					for (i=0;i<x.length;i++){
-						xx=x[i].getElementsByTagName("name");
-						txt = txt + "<option value=" + xx[0].firstChild.nodeValue + " >" + xx[0].firstChild.nodeValue + "</option>";
+						x_group=x[i].getElementsByTagName("group");
+						x_function=x[i].getElementsByTagName("function");
+						x_key=x[i].getElementsByTagName("key");
+						txt = txt + "<tr><td>" + x_group[0].firstChild.nodeValue +
+						 "</td><td>" + x_function[0].firstChild.nodeValue + "</td><td>" + x_key[0].firstChild.nodeValue + "</td></tr>";
 					}
-					document.getElementById("group_list").innerHTML = txt;
+					document.getElementById("shortcut_data").innerHTML = txt;
+					document.getElementById("shortcut_add").style.display = "";
 				}			
 			}
 		}
-		xmlhttp.open("GET", "group.php?sid=" + shortcut_id, true);
+		xmlhttp.open("GET", "data.php?sid=" + shortcut_id, true);
 		xmlhttp.send();
+			
 	}
 	</script>
 	
@@ -42,7 +56,7 @@
 
 <?php
 	
-	echo "<h3>Choose Product and Group Name First:</h3>";
+	echo "<h3>Choose Product First:</h3>";
 		
 	/*connect database*/
 	$con = mysql_connect("127.0.0.1","root","123456");
@@ -55,15 +69,24 @@
 	/*get data*/
 	$result = mysql_query("SELECT name,id FROM shortcut_list ORDER BY name");
 	echo "<select onchange='get_group_list(this.value)'>\n";
-	echo "\t<option value='null'> - Choose - </option>\n";
+	echo "\t<option value='0'> - Choose - </option>\n";
 	while($row = mysql_fetch_array($result)){
 		echo "\t<option value='" . $row['id'] . "' >" . $row['name'] . "</option>\n";
 	}
-	echo "</select>\n";
-	echo "<select id='group_list' style='display:none'>\n";
-	echo "</select>\n";
+	echo "</select><br />\n";
+	echo "<br />\n";
 	
-	echo "<p id='box'></p>";
+	/*output data*/
+	echo "<table id='shortcut_data' style='display:none' border='1' ></table>\n";
+	
+	echo "<br />\n";
+	
+	echo "<form id='shortcut_add' style='display:none'>\n";
+	echo "Group Name:\n<input type='text' name='groupname' /><br />\n";
+	echo "Function:\n<input type='text' name='function' /><br />\n";
+	echo "Shortcut:\n<input type='text' name='shortcut' /><br />\n";
+	echo "<input type='submit' class='button' id='submit_button' value='Add to...' />\n";
+	echo "</form>\n";
 	
 	mysql_close($con);
 	
