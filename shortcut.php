@@ -1,5 +1,7 @@
 <?php
 	
+	include 'api/connect.php';
+	
 	/*invalid id output*/
 	function invalid_id_output($title, $content){
 		echo "\t<title>Invalid ID - Keyboardance</title>\n";
@@ -29,13 +31,6 @@
 	echo "<head>\n";
 	echo "\t<meta charset='UTF-8'>\n";
 	echo "\t<meta content='IE=edge' http-equiv='X-UA-Compatible'>\n";
-	
-	$con = mysql_connect("127.0.0.1","root","123456");
-	if (!$con) {
-		die('Could not connect: ' . mysql_error());
-	}
-	mysql_select_db("shortcuts", $con);
-	mysql_query("SET NAMES UTF8");
 	
 	$sid = $_GET['sid'];
 	

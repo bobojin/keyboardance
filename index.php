@@ -2,6 +2,7 @@
 	
 	/*get display text*/
 	include 'api/display.php';
+	include 'api/connect.php';
 	
 	/*output string into keyboard style*/
 	function keyboard_output($input){
@@ -31,13 +32,6 @@
 	echo "\t\t\t<input type='submit' value='" . $search_button_hp_text . "'>\n";
 	echo "\t\t</form></div>\n";
 	echo "\t</div></div>\n";
-	
-	$con = mysql_connect("127.0.0.1","root","123456");
-	if (!$con){
-		die('Could not connect: ' . mysql_error());
-	}
-	mysql_select_db("shortcuts", $con);
-	mysql_query("SET NAMES UTF8");
 	
 	$result = mysql_query("SELECT * FROM shortcut_list ORDER BY count DESC LIMIT 5");
 	
