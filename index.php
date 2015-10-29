@@ -1,7 +1,7 @@
 <?php
 	
 	/*get display text*/
-	include 'display.php';
+	include 'api/display.php';
 	
 	/*output string into keyboard style*/
 	function keyboard_output($input){
@@ -27,8 +27,8 @@
 	keyboard_output("KEYBOARDANCE");
 		
 	echo "\t\t<div class='text_align_center'><form action='search.php' method='post'>\n";
-	echo "\t\t\t<input name='keyword' type='text' placeholder= '" . $search_placeholder_hp_display . "' autocomplete='off'>\n";
-	echo "\t\t\t<input type='submit' value='" . $search_button_hp_display . "'>\n";
+	echo "\t\t\t<input name='keyword' type='text' placeholder= '" . $search_placeholder_hp_text . "' autocomplete='off'>\n";
+	echo "\t\t\t<input type='submit' value='" . $search_button_hp_text . "'>\n";
 	echo "\t\t</form></div>\n";
 	echo "\t</div></div>\n";
 	
@@ -42,7 +42,7 @@
 	$result = mysql_query("SELECT * FROM shortcut_list ORDER BY count DESC LIMIT 5");
 	
 	echo "\t<div class='content_hp'><div>\n";
-	echo "\t<div class='title_content_hp'><b>" . $title_content_hp_display . "</b></div><br />\n";
+	echo "\t<div class='title_content_hp'><b>" . $title_content_hp_text . "</b></div><br />\n";
 		
 	while($row = mysql_fetch_array($result)){
 		echo "\t\t<div class='shortcut_hp'>\n";
@@ -55,7 +55,7 @@
 	
 	mysql_close($con);
 	
-	echo "\t<div class='footer'>Powered by <a href='import.php'>Bobo Jin</a></div>\n";
+	echo "\t<div class='footer'>Powered by <a href='api/import.php'>Bobo Jin</a></div>\n";
 	echo "</body>\n";
 	echo "</html>";
 ?>
