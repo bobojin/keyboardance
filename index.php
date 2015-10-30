@@ -49,7 +49,7 @@
 	
 	mysql_close($con);
 	
-	echo "\t<div class='footer'>Powered by <a href='api/import.php'>Bobo Jin</a></div>\n";
+	echo "\t<div class='footer'>Powered by <a href='api/admin.php'>Bobo Jin</a></div>\n";
 	echo "</body>\n";
 	echo "</html>";
 ?>
