@@ -1,29 +1,14 @@
 body {
-	font-family: Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	margin: 100 100 auto;
 }
 th	{
 	text-align: left;
+	min-width: 150px;
 }
-
-.button {  
-    display: inline-block;  
-    zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */  
-    *display: inline;  
-    vertical-align: baseline;  
-    margin: 0 2px;  
-    outline: none;  
-    cursor: pointer;  
-    text-align: center;  
-    text-decoration: none;  
-    font: 14px/100% Arial, Helvetica, sans-serif;  
-    padding: .5em 2em .55em;  
-    border-radius: .5em;  
-}  
-.button:hover {  
-    text-decoration: none;  
-}  
-.button:active {  
-    position: relative;  
-    top: 1px;  
+th, td {
+	padding: 4px;
+}
+#result {
+	padding-top: 10px;
+	color: red;
 }
