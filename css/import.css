@@ -3,12 +3,20 @@ body {
 }
 th	{
 	text-align: left;
-	min-width: 150px;
 }
 th, td {
-	padding: 4px;
+	padding: 5px;
+}
+.th_width {
+	min-width: 120px;
 }
 #result {
 	padding-top: 10px;
 	color: red;
+}
+.input_box {
+	margin-bottom: 5px;
+}
+.submit_button {
+	margin-top: 10px;
 }
