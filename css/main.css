@@ -149,6 +149,9 @@ a:visited {
 @media screen and (max-width: 540px) {
 	.content_sc {width: 420px; }
 }
+.group_section_sc {
+	padding-bottom: 10px;
+}
 
 .key_line_sc {
 	padding-top: 10px;

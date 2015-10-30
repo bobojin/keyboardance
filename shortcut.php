@@ -72,12 +72,13 @@
 				/*get data by group*/
 				while($row = mysql_fetch_array($result)){
 					$groupname = $row['group_name'];
-					echo "\t\t<h3>" . $groupname . "</h3>\n";	
+					echo "\t\t<div class='group_section_sc'><h3>" . $groupname . "</h3>\n";	
 					$result_data = mysql_query("SELECT * FROM shortcut_data WHERE shortcut_id = $sid AND group_name LIKE '$groupname' ");
 					/*each group*/
 					while($row_data = mysql_fetch_array($result_data)){
 						echo "\t\t<div class='key_line_sc'><span class='function_sc'>" . $row_data['function'] . "</span> <span class='key_sc'>" . $row_data['key_input'] . "</span></div>";
-					}		
+					}
+					echo "\t\t</div>";		
 				}	
 				echo "\t</div></div>\n";
 			}
