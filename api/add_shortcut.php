@@ -3,9 +3,9 @@
 	include 'connect.php';
 	
 	$i = $_GET['id'];
-	$g = $_GET['group'];
-	$f = $_GET['function'];
-	$s = $_GET['shortcut'];
+	$g = urldecode($_GET['group']);
+	$f = urldecode($_GET['function']);
+	$s = urldecode($_GET['shortcut']);
 	
 	$result = mysql_query("INSERT INTO shortcut_data (shortcut_id,group_name,function,key_input) VALUES('$i','$g','$f','$s')");
 	$get_id = mysql_query("SELECT id FROM shortcut_data ORDER BY id DESC LIMIT 1");

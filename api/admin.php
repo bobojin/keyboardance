@@ -62,11 +62,13 @@
 	function add_shortcut(){
 		
 		var add_id = document.getElementById("selectbox").value;
-		var add_groupname = document.getElementById("groupname").value;
-		var add_function = document.getElementById("function").value;
-		var add_shortcut = document.getElementById("shortcut").value;
+		var add_groupname = encodeURI(document.getElementById("groupname").value);
+		var add_function = encodeURI(document.getElementById("function").value);
+		var add_shortcut = encodeURI(document.getElementById("shortcut").value);
 		
 		var add_url = "add_shortcut.php?id=" + add_id + "&group=" + add_groupname + "&function=" + add_function + "&shortcut=" + add_shortcut;
+		
+//		document.getElementById("result2").innerHTML = add_url;
 		
 		if (add_groupname == "" || add_function == "" || add_shortcut == ""){
 			document.getElementById("result").style.display = "";
@@ -95,7 +97,7 @@
 				else{
 					var newNode = document.createElement("tr");
 					newNode.id = "shortcut" + x;
-					newNode.innerHTML = "<td>" + x + "</td><td>" + add_groupname + "</td><td>" + add_function + "</td><td>" + add_shortcut + "</td><td><a href='javascript:void(0)' onclick='delete_shortcut(" + x + ")' /><i class=\"fa fa-trash-o\"></i></a></td>";
+					newNode.innerHTML = "<td>" + x + "</td><td>" + decodeURI(add_groupname) + "</td><td>" + decodeURI(add_function) + "</td><td>" + decodeURI(add_shortcut) + "</td><td><a href='javascript:void(0)' onclick='delete_shortcut(" + x + ")' /><i class=\"fa fa-trash-o\"></i></a></td>";
 					
 					document.getElementById("shortcut_data").appendChild(newNode);
 					document.getElementById("result").style.display = "";
@@ -194,6 +196,7 @@
 	echo "</div>\n";
 	
 	echo "<div id='result' style='display:none' >Result:</div>\n";
+//	echo "<div id='result2' >Result:</div>\n";
 	
 	mysql_close($con);
 	
