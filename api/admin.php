@@ -13,12 +13,17 @@
 	/*get shortcut data*/
 	function get_shortcut_data(shortcut_id){
 		
+		clear_input();
+		
 		if (shortcut_id == 0){
 			document.getElementById("shortcut_data").style.display = "none";
 			document.getElementById("shortcut_data").innerHTML = "";
 			document.getElementById("shortcut_add").style.display = "none";
+			document.getElementById("view_url").href = "../index.php";
 			return;
 		}
+		
+		document.getElementById("view_url").href = "../shortcut.php?sid=" + shortcut_id;
 		
 		document.getElementById("submit_button").value = "Add to " + document.getElementById("selectbox").options[document.getElementById("selectbox").selectedIndex].text;
 		
@@ -40,13 +45,20 @@
 				}
 				else{
 					document.getElementById("shortcut_data").style.display = "";
+					
 					for (i=0;i<x.length;i++){
+						
 						x_id=x[i].getElementsByTagName("id");
 						x_group=x[i].getElementsByTagName("group");
 						x_function=x[i].getElementsByTagName("function");
 						x_key=x[i].getElementsByTagName("key");
-						txt = txt + "<tr id=\"shortcut" + x_id[0].firstChild.nodeValue + "\"><td>" + x_id[0].firstChild.nodeValue + "</td><td>"  + x_group[0].firstChild.nodeValue +
-						 "</td><td>" + x_function[0].firstChild.nodeValue + "</td><td>" + x_key[0].firstChild.nodeValue + "</td><td><a href='javascript:void(0)' onclick='delete_shortcut(" + x_id[0].firstChild.nodeValue + ")' /><i class=\"fa fa-trash-o\"></i></a></td></tr>";
+						
+						txt = txt + "<tr id=\"shortcut" + x_id[0].firstChild.nodeValue + "\"><td>" + x_id[0].firstChild.nodeValue + "</td>";
+						txt = txt + "<td>" + x_group[0].firstChild.nodeValue + "</td>";
+						txt = txt + "<td>" + x_function[0].firstChild.nodeValue + "</td>";
+						txt = txt + "<td>" + x_key[0].firstChild.nodeValue + "</td>";
+						txt = txt + "<td class='text_align_center'><a href='javascript:void(0)' onclick='delete_shortcut(" + x_id[0].firstChild.nodeValue + ")' /><i class=\"fa fa-trash-o\"></i></a></td></tr>";
+						
 					}
 					document.getElementById("shortcut_data").innerHTML = txt;
 					document.getElementById("shortcut_add").style.display = "";
@@ -65,7 +77,6 @@
 		var add_groupname = encodeURIComponent(encodeURIComponent(document.getElementById("groupname").value));
 		var add_function = encodeURIComponent(encodeURIComponent(document.getElementById("function").value));
 		var add_shortcut = encodeURIComponent(encodeURIComponent(document.getElementById("shortcut").value));
-		
 		var add_url = "add_shortcut.php?id=" + add_id + "&group=" + add_groupname + "&function=" + add_function + "&shortcut=" + add_shortcut;
 		
 		if (add_groupname == "" || add_function == "" || add_shortcut == ""){
@@ -95,12 +106,17 @@
 				else{
 					var newNode = document.createElement("tr");
 					newNode.id = "shortcut" + x;
-					newNode.innerHTML = "<td>" + x + "</td><td>" + document.getElementById("groupname").value + "</td><td>" + document.getElementById("function").value + "</td><td>" + document.getElementById("shortcut").value + "</td><td><a href='javascript:void(0)' onclick='delete_shortcut(" + x + ")' /><i class=\"fa fa-trash-o\"></i></a></td>";
-					
+					newTxt = "<td class='text_align_center'>" + x + "</td>";
+					newTxt = newTxt + "<td>" + document.getElementById("groupname").value + "</td>";
+					newTxt = newTxt + "<td>" + document.getElementById("function").value + "</td>";
+					newTxt = newTxt + "<td>" + document.getElementById("shortcut").value + "</td>";
+					newTxt = newTxt + "<td class='text_align_center'><a href='javascript:void(0)' onclick='delete_shortcut(" + x + ")' /><i class=\"fa fa-trash-o\"></i></a></td>";
+
+					newNode.innerHTML = newTxt;
+										
 					document.getElementById("shortcut_data").appendChild(newNode);
 					document.getElementById("result").style.display = "";
 					document.getElementById("result").innerHTML = "Success!";
-					
 					document.getElementById("function").value = "";
 					document.getElementById("shortcut").value = "";
 							
@@ -178,7 +194,7 @@
 	while($row = mysql_fetch_array($result)){
 		echo "\t<option value='" . $row['id'] . "' >" . $row['name'] . "</option>\n";
 	}
-	echo "</select><br />\n";
+	echo "</select>&nbsp;&nbsp;&nbsp;<a href='../index.php' id='view_url' target='_blank' >Visit</a><br />\n";
 	echo "<br />\n";
 	
 	/*output data*/
