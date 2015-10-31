@@ -15,7 +15,7 @@
 	echo "\t<title>Data Center - Keyboardance</title>";
 	echo "\t<link rel='stylesheet' type='text/css' href='../css/bootstrap.css'>";
 	echo "\t<link rel='stylesheet' type='text/css' href='../css/font-awesome.min.css'>";
-	echo "\t<link rel='stylesheet' type='text/css' href='../css/import.css'>";
+	echo "\t<link rel='stylesheet' type='text/css' href='../css/admin.css'>";
 	echo "\t<script src='../js/admin.js'></script>";
 	echo "</head>";
 	echo "<body>";
