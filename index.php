@@ -17,7 +17,7 @@
 	echo "<head>\n";
 	echo "\t<meta charset='UTF-8'>\n";
 	echo "\t<meta content='IE=edge' http-equiv='X-UA-Compatible'>\n";
-	echo "\t<title>Keyboardance - Beta</title>\n";
+	echo "\t<title>" . $title_hp_text . "</title>\n";
 	echo "\t<link rel='stylesheet' type='text/css' href='css/main.css'>\n";
 	echo "</head>\n";
 	echo "<body>\n";
@@ -49,7 +49,7 @@
 	
 	mysql_close($con);
 	
-	echo "\t<div class='footer'>Powered by <a href='api/admin.php'>Bobo Jin</a></div>\n";
+	echo "\t<div class='footer'>Powered by Bobo Jin · <a href='api/admin.php' target='_blank'>Login</a></div>\n";
 	echo "</body>\n";
 	echo "</html>";
 ?>

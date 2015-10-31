@@ -1,23 +1,28 @@
-<html lang='zh-cn'>
-<head>
-	<meta charset='UTF-8'>
-	<meta content='IE=edge' http-equiv='X-UA-Compatible'>
-	<title>Data Import - Keyboardance</title>
-
-	<link rel='stylesheet' type='text/css' href='../css/bootstrap.css'>
-	<link rel='stylesheet' type='text/css' href='../css/font-awesome.min.css'>
-	<link rel='stylesheet' type='text/css' href='../css/import.css'>
-	
-	<script src="../js/admin.js"></script>	
-	
-</head>
-<body>
-
 <?php
+	
+	$pw = $_COOKIE["password"];
+	
+	if ($pw != "1234567"){
+		echo "<script>";
+		echo "location.href='login.php'";
+		echo "</script>";
+	}
+
+	echo "<html lang='zh-cn'>";
+	echo "<head>";
+	echo "\t<meta charset='UTF-8'>";
+	echo "\t<meta content='IE=edge' http-equiv='X-UA-Compatible'>";
+	echo "\t<title>Data Center - Keyboardance</title>";
+	echo "\t<link rel='stylesheet' type='text/css' href='../css/bootstrap.css'>";
+	echo "\t<link rel='stylesheet' type='text/css' href='../css/font-awesome.min.css'>";
+	echo "\t<link rel='stylesheet' type='text/css' href='../css/import.css'>";
+	echo "\t<script src='../js/admin.js'></script>";
+	echo "</head>";
+	echo "<body>";
 	
 	include 'connect.php';
 	
-	echo "<h3>Choose Product:</h3>";
+	echo "<h3>Please Choose Product:</h3>";
 	
 	/*get data*/
 	$result = mysql_query("SELECT name,id FROM shortcut_list ORDER BY name");
