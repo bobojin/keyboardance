@@ -2,16 +2,25 @@
 
 	include 'connect.php';
 	
-	$id = $_GET['id'];
+	$p = $_COOKIE['password'];
+	$check_password = mysql_query("SELECT level FROM admin_account WHERE password LIKE '$p'");
+	$row = mysql_fetch_array($check_password);
+	$level = $row['level'];
 	
-	$result = mysql_query("DELETE FROM shortcut_data WHERE id = '$id'");
-	
-	if ($result){
-		echo("deleted");
+	if($level == 0){
+		echo("No authorized to delete data!");
 	}
 	else{
-		echo("failed");
+		$id = $_GET['id'];
+		$delete_result = mysql_query("DELETE FROM shortcut_data WHERE id = '$id'");
+		if ($delete_result){
+			echo("Deleted!");
+		}
+		else{
+			echo("Delete Failed!");
+		}
 	}
 		
 	mysql_close($con);
+	
 ?>

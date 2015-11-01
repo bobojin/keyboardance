@@ -114,13 +114,13 @@ function delete_shortcut(delete_id){
 	xmlhttp.onreadystatechange = function(){
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200){		
 			x = xmlhttp.responseText;		
-			if (x == "deleted"){			
+			if (x == "Deleted!"){			
 				var delete_tr = document.getElementById("shortcut" + delete_id);
 				delete_tr.parentNode.removeChild(delete_tr);
-				result("Deleted!",1500);		
+				result(x,1500);		
 			}
 			else{
-				result("Delete Failed!",3000);
+				result(x,3000);
 			}			
 		}
 	}
