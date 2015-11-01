@@ -4,6 +4,7 @@
 	
 	include 'connect.php';
 	
+	/*check password first*/
 	$check_password = mysql_query("SELECT username FROM admin_account WHERE password LIKE '$pw'");
 	$account_match = mysql_num_rows($check_password);
 	$username = "";
@@ -30,7 +31,7 @@
 	echo "</head>";
 	echo "<body>";
 	
-	echo "<h3>Please Choose Product:</h3>";
+	echo "<h3>Choose Product:</h3>";
 	
 	/*get data*/
 	$result = mysql_query("SELECT name,id FROM shortcut_list ORDER BY name");
@@ -57,7 +58,6 @@
 	
 	mysql_close($con);
 	
+	echo "</body>\n";
+	echo "</html>\n";
 ?>
-
-</body>
-</html>
