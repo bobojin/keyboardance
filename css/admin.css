@@ -1,5 +1,5 @@
 body {
-	margin: 100 100 auto;
+	margin: 50 100 auto;
 }
 th	{
 	text-align: left;
@@ -11,15 +11,34 @@ th, td {
 	min-width: 120px;
 }
 #result {
-	padding-top: 10px;
-	color: red;
+	padding-top: 5px;
+	color: blue;
 }
 .input_box {
 	margin-bottom: 5px;
+	width: 300px;
 }
 .submit_button {
 	margin-top: 10px;
 }
 .text_align_center {
 	text-align: center;
+}
+.control_board {
+	height: 180px;
+	width: 100%;
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	background-color: #f2f2f3;
+	padding-top: 15px;
+	padding-left: 100px;
+}
+#shortcut_data {
+	margin-bottom: 185px;
+	font-size: 16px;
+}
+.input_item {
+	display: inline-block;
+	width: 100px;
 }

@@ -1,4 +1,4 @@
-/*admin data control js*/
+/*admin control js*/
 	
 /*get shortcut data by id*/
 function get_shortcut_data(shortcut_id){
@@ -62,10 +62,12 @@ function add_shortcut(){
 		result("Data Invalid!",1500);
 		return;
 	}
+/*
 	if (add_groupname.length > 15 || add_function.length > 15 || add_shortcut.length > 15){
 		result("Too long (length limited at 15) !",3000);
 		return;
 	}
+*/
 	var xmlhttp;
 	if (window.XMLHttpRequest){
 		xmlhttp = new XMLHttpRequest();
@@ -143,7 +145,7 @@ function result(result_text,result_time){
 	document.getElementById("result").style.display = "";
 	document.getElementById("result").innerHTML = result_text;
 	if (result_time > 0)
-			setTimeout("display_none_result()",result_time);
+		setTimeout("display_none_result()",result_time);
 }
 
 /*login*/

@@ -6,8 +6,9 @@
 	$g = urldecode($_GET['group']);
 	$f = urldecode($_GET['function']);
 	$s = urldecode($_GET['shortcut']);
+	$u = $_COOKIE['username'];
 	
-	$result = mysql_query("INSERT INTO shortcut_data (shortcut_id,group_name,function,key_input) VALUES('$i','$g','$f','$s')");
+	$result = mysql_query("INSERT INTO shortcut_data (shortcut_id,group_name,function,key_input,added_by) VALUES('$i','$g','$f','$s','$u')");
 	$get_id = mysql_query("SELECT id FROM shortcut_data ORDER BY id DESC LIMIT 1");
 	
 	if ($result AND $get_id){
