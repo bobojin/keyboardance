@@ -1,7 +1,7 @@
 <?php
 	
 	include 'api/connect.php';
-	
+
 	/*invalid id output*/
 	function invalid_id_output($title, $content){
 		echo "\t<title>Invalid ID - Keyboardance</title>\n";
@@ -99,7 +99,7 @@
 	
 	mysql_close($con);
 	
-	echo "\t<div class='footer'>Powered by Bobo Jin</div>\n";
+ 	echo "\t<div class='footer'>Powered by Bobo Jin</div>\n";
 	echo "</body>\n";
 	echo "</html>";
 ?>

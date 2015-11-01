@@ -39,7 +39,6 @@ function get_shortcut_data(shortcut_id){
 					txt = txt + "<td>" + x_group[0].firstChild.nodeValue + "</td>";
 					txt = txt + "<td>" + x_function[0].firstChild.nodeValue + "</td>";
 					txt = txt + "<td>" + x_key[0].firstChild.nodeValue + "</td>";
-					
 					txt = txt + "<td class='text_align_center'><a href='javascript:void(0)' onclick='update_shortcut(" + x_id[0].firstChild.nodeValue + ")' /><i class='fa fa-pencil-square-o'></i></a></td>";
 					txt = txt + "<td class='text_align_center'><a href='javascript:void(0)' onclick='delete_shortcut(" + x_id[0].firstChild.nodeValue + ")' /><i class='fa fa-trash-o'></i></a></td></tr>";	
 				}
@@ -87,7 +86,7 @@ function add_shortcut(){
 			else{
 				var newNode = document.createElement("tr");
 				newNode.id = "shortcut" + x;
-				newTxt = "<td class='text_align_center'>" + x + "</td>";
+				newTxt = "<td>" + x + "</td>";
 				newTxt = newTxt + "<td>" + document.getElementById("groupname").value + "</td>";
 				newTxt = newTxt + "<td>" + document.getElementById("function").value + "</td>";
 				newTxt = newTxt + "<td>" + document.getElementById("shortcut").value + "</td>";
@@ -97,7 +96,7 @@ function add_shortcut(){
 				document.getElementById("shortcut_data").appendChild(newNode);
 				document.getElementById("function").value = "";
 				document.getElementById("shortcut").value = "";
-				result("Success!",1500);		
+ 				result("Success!",1500);		
 			}			
 		}
 	}
@@ -198,7 +197,7 @@ function submit_update(){
 				result(x,3000);
 			}
 			else{
-				updateTxt = "<td class='text_align_center'>" + update_id + "</td>";
+				updateTxt = "<td>" + update_id + "</td>";
 				updateTxt = updateTxt + "<td>" + update_groupname + "</td>";
 				updateTxt = updateTxt + "<td>" + update_function + "</td>";
 				updateTxt = updateTxt + "<td>" + update_shortcut + "</td>";

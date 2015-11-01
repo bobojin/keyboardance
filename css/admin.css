@@ -30,7 +30,8 @@ th, td {
 	position: fixed;
 	bottom: 0px;
 	left: 0px;
-	background-color: #f2f2f3;
+	border-top:1px solid #bababa;
+	background-color: #f9f9f9;
 	padding-top: 15px;
 	padding-left: 100px;
 }
