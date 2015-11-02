@@ -44,7 +44,7 @@ function get_shortcut_data(shortcut_id){
 				}
 				document.getElementById("shortcut_data").innerHTML = txt;
 				document.getElementById("shortcut_add").style.display = "";
-			}			
+			}
 		}
 	}
 	xmlhttp.open("GET", "get_shortcut_data.php?sid=" + shortcut_id, true);
@@ -96,7 +96,7 @@ function add_shortcut(){
 				document.getElementById("shortcut_data").appendChild(newNode);
 				document.getElementById("function").value = "";
 				document.getElementById("shortcut").value = "";
- 				result("Success!",1500);		
+				result("Success!",1500);		
 			}			
 		}
 	}
@@ -148,7 +148,7 @@ function update_shortcut(update_id){
 	}
 	xmlhttp.onreadystatechange = function(){
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
-			x = xmlhttp.responseXML.documentElement.getElementsByTagName("shortcut_item");			
+			x = xmlhttp.responseXML.documentElement.getElementsByTagName("shortcut_item");
 			x_group=x[0].getElementsByTagName("group");
 			x_function=x[0].getElementsByTagName("function");
 			x_key=x[0].getElementsByTagName("key");		
@@ -179,7 +179,7 @@ function submit_update(){
 		result("Data Invalid!",1500);
 		return;
 	}
-	if (update_groupname.length > 45 || update_function.length > 45 || update_shortcut.length > 45){
+	if (update_groupname.length > 45 || update_function.length > 90 || update_shortcut.length > 45){
 		result("Too long (length limited at 45) !",3000);
 		return;
 	}

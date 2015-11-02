@@ -24,6 +24,17 @@ th, td {
 .text_align_center {
 	text-align: center;
 }
+.select_board {
+	height: 95px;
+	width: 100%;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	border-bottom:1px solid #bababa;
+	background-color: #e3e3e3;
+	padding-left: 100px;
+	padding-top: 2px;
+}
 .control_board {
 	height: 180px;
 	width: 100%;
@@ -36,6 +47,7 @@ th, td {
 	padding-left: 100px;
 }
 #shortcut_data {
+	margin-top: 110px;
 	margin-bottom: 175px;
 	font-size: 14px;
 }
