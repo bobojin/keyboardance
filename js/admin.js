@@ -12,7 +12,8 @@ function get_shortcut_data(shortcut_id){
 	}
 	document.getElementById("view_url").href = "../shortcut.php?sid=" + shortcut_id;	
 	document.getElementById("submit_button").value = "Add to " + document.getElementById("selectbox").options[document.getElementById("selectbox").selectedIndex].text;
-	var xmlhttp;
+	var xmlhttp,x,txt;
+	var x_id,x_group,x_function,x_key;
 	if (window.XMLHttpRequest){
 		xmlhttp = new XMLHttpRequest();
 	}
@@ -30,7 +31,7 @@ function get_shortcut_data(shortcut_id){
 			}
 			else{
 				document.getElementById("shortcut_data").style.display = "";
-				for (i=0;i<x.length;i++){		
+				for (i=0;i<x.length;i++){		`
 					x_id=x[i].getElementsByTagName("id");
 					x_group=x[i].getElementsByTagName("group");
 					x_function=x[i].getElementsByTagName("function");
@@ -66,11 +67,12 @@ function add_shortcut(){
 		result("Data Invalid!",1500);
 		return;
 	}
-	if (add_groupname.length > 45 || add_function.length > 45 || add_shortcut.length > 45){
+	if (add_groupname.length > 45 || add_function.length > 90 || add_shortcut.length > 45){
 		result("Too long (length limited at 45) !",3000);
 		return;
 	}
-	var xmlhttp;
+	var xmlhttp,x;
+	var new_node,new_txt;
 	if (window.XMLHttpRequest){
 		xmlhttp = new XMLHttpRequest();
 	}
@@ -84,16 +86,16 @@ function add_shortcut(){
 				result("Failed!",3000);
 			}
 			else{
-				var newNode = document.createElement("tr");
-				newNode.id = "shortcut" + x;
-				newTxt = "<td>" + x + "</td>";
-				newTxt = newTxt + "<td>" + document.getElementById("groupname").value + "</td>";
-				newTxt = newTxt + "<td>" + document.getElementById("function").value + "</td>";
-				newTxt = newTxt + "<td>" + document.getElementById("shortcut").value + "</td>";
-				newTxt = newTxt + "<td class='text_align_center'><a href='javascript:void(0)' onclick='update_shortcut(" + x + ")' /><i class='fa fa-pencil-square-o'></i></a></td>";
-				newTxt = newTxt + "<td class='text_align_center'><a href='javascript:void(0)' onclick='delete_shortcut(" + x + ")' /><i class='fa fa-trash-o'></i></a></td></tr>";		
-				newNode.innerHTML = newTxt;							
-				document.getElementById("shortcut_data").appendChild(newNode);
+				new_node = document.createElement("tr");
+				new_node.id = "shortcut" + x;
+				new_txt = "<td>" + x + "</td>";
+				new_txt = new_txt + "<td>" + document.getElementById("groupname").value + "</td>";
+				new_txt = new_txt + "<td>" + document.getElementById("function").value + "</td>";
+				new_txt = new_txt + "<td>" + document.getElementById("shortcut").value + "</td>";
+				new_txt = new_txt + "<td class='text_align_center'><a href='javascript:void(0)' onclick='update_shortcut(" + x + ")' /><i class='fa fa-pencil-square-o'></i></a></td>";
+				new_txt = new_txt + "<td class='text_align_center'><a href='javascript:void(0)' onclick='delete_shortcut(" + x + ")' /><i class='fa fa-trash-o'></i></a></td></tr>";		
+				new_node.innerHTML = new_txt;							
+				document.getElementById("shortcut_data").appendChild(new_node);
 				document.getElementById("function").value = "";
 				document.getElementById("shortcut").value = "";
 				result("Success!",1500);		
@@ -140,6 +142,7 @@ function update_shortcut(update_id){
 	document.getElementById("shortcut"+ update_id).style.color = "red";
 	var update_url = "get_shortcut_item.php?id=" + update_id;
 	var xmlhttp;
+	var x,x_group,x_function,x_key;
 	if (window.XMLHttpRequest){
 		xmlhttp = new XMLHttpRequest();
 	}
@@ -151,14 +154,11 @@ function update_shortcut(update_id){
 			x = xmlhttp.responseXML.documentElement.getElementsByTagName("shortcut_item");
 			x_group=x[0].getElementsByTagName("group");
 			x_function=x[0].getElementsByTagName("function");
-			x_key=x[0].getElementsByTagName("key");		
-			xx_group=x_group[0].firstChild.nodeValue;
-			xx_function=x_function[0].firstChild.nodeValue;
-			xx_key=x_key[0].firstChild.nodeValue;		
+			x_key=x[0].getElementsByTagName("key");			
 			document.getElementById("update_id").innerHTML = update_id;
-			document.getElementById("update_groupname").value = xx_group;
-			document.getElementById("update_function").value = xx_function;
-			document.getElementById("update_shortcut").value = xx_key;		
+			document.getElementById("update_groupname").value = x_group[0].firstChild.nodeValue;
+			document.getElementById("update_function").value = x_function[0].firstChild.nodeValue;
+			document.getElementById("update_shortcut").value = x_key[0].firstChild.nodeValue;		
 		}
 	}
 	xmlhttp.open("GET", update_url, true);
@@ -184,6 +184,7 @@ function submit_update(){
 		return;
 	}
 	var xmlhttp;
+	var x,update_txt;
 	if (window.XMLHttpRequest){
 		xmlhttp = new XMLHttpRequest();
 	}
@@ -197,13 +198,13 @@ function submit_update(){
 				result(x,3000);
 			}
 			else{
-				updateTxt = "<td>" + update_id + "</td>";
-				updateTxt = updateTxt + "<td>" + update_groupname + "</td>";
-				updateTxt = updateTxt + "<td>" + update_function + "</td>";
-				updateTxt = updateTxt + "<td>" + update_shortcut + "</td>";
-				updateTxt = updateTxt + "<td class='text_align_center'><a href='javascript:void(0)' onclick='update_shortcut(" + update_id + ")' /><i class='fa fa-pencil-square-o'></i></a></td>";
-				updateTxt = updateTxt + "<td class='text_align_center'><a href='javascript:void(0)' onclick='delete_shortcut(" + update_id + ")' /><i class='fa fa-trash-o'></i></a></td></tr>";		
-				document.getElementById("shortcut"+ update_id).innerHTML = updateTxt;
+				update_txt = "<td>" + update_id + "</td>";
+				update_txt = update_txt + "<td>" + update_groupname + "</td>";
+				update_txt = update_txt + "<td>" + update_function + "</td>";
+				update_txt = update_txt + "<td>" + update_shortcut + "</td>";
+				update_txt = update_txt + "<td class='text_align_center'><a href='javascript:void(0)' onclick='update_shortcut(" + update_id + ")' /><i class='fa fa-pencil-square-o'></i></a></td>";
+				update_txt = update_txt + "<td class='text_align_center'><a href='javascript:void(0)' onclick='delete_shortcut(" + update_id + ")' /><i class='fa fa-trash-o'></i></a></td></tr>";		
+				document.getElementById("shortcut"+ update_id).innerHTML = update_txt;
 				document.getElementById("shortcut"+ update_id).style.color = "";
 				result(x,1500);
 				close_update();
@@ -248,13 +249,13 @@ function result(result_text,result_time){
 /*login*/
 function login(){
 	var pw_input = document.getElementById("password").value;
-	setCookie("password", pw_input, 1);
+	set_cookie("password", pw_input, 1);
 	location.href='admin.php';
 }
 
 /*set cookie*/
-function setCookie(name, value, iDay){   
-    var oDate=new Date();   
-    oDate.setDate(oDate.getDate()+iDay);       
-    document.cookie=name+'='+value+';expires='+oDate;
+function set_cookie(name,value,day){   
+    var s_date=new Date();   
+    s_date.setDate(s_date.getDate()+day);       
+    document.cookie=name+'='+value+';expires='+s_date;
 }
