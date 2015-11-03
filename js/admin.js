@@ -31,7 +31,7 @@ function get_shortcut_data(shortcut_id){
 			}
 			else{
 				document.getElementById("shortcut_data").style.display = "";
-				for (i=0;i<x.length;i++){		`
+				for (i=0;i<x.length;i++){
 					x_id=x[i].getElementsByTagName("id");
 					x_group=x[i].getElementsByTagName("group");
 					x_function=x[i].getElementsByTagName("function");
