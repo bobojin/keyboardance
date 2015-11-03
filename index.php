@@ -1,7 +1,7 @@
 <?php
 	
 	/*get display text*/
-	include 'api/display.php';
+	include 'api/display_text.php';
 	include 'api/connect.php';
 	
 	/*output string into keyboard style*/

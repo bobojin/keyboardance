@@ -1,5 +1,9 @@
 /*admin control js*/
-	
+
+//	Rule:
+//	get_xxx -> return xml
+//	xxx -> as RESTful
+
 /*get shortcut data by id*/
 function get_shortcut_data(shortcut_id){
 	close_update();
@@ -50,7 +54,6 @@ function get_shortcut_data(shortcut_id){
 	}
 	xmlhttp.open("GET", "get_shortcut_data.php?sid=" + shortcut_id, true);
 	xmlhttp.send();
-		
 }
 
 /*add shortcut item*/
@@ -62,7 +65,7 @@ function add_shortcut(){
 	var encoded_groupname = encodeURIComponent(encodeURIComponent(add_groupname));
 	var encoded_function = encodeURIComponent(encodeURIComponent(add_function));
 	var encoded_shortcut = encodeURIComponent(encodeURIComponent(add_shortcut));
-	var add_url = "add_shortcut.php?id=" + add_id + "&group=" + encoded_groupname + "&function=" + encoded_function + "&shortcut=" + encoded_shortcut;
+	var add_url = "shortcut_unit.php?action=add&id=" + add_id + "&group=" + encoded_groupname + "&function=" + encoded_function + "&shortcut=" + encoded_shortcut;
 	if (add_groupname == "" || add_function == "" || add_shortcut == ""){
 		result("Data Invalid!",1500);
 		return;
@@ -109,7 +112,7 @@ function add_shortcut(){
 /*delete shortcut item*/
 function delete_shortcut(delete_id){
 	close_update();	
-	var delete_url = "delete_shortcut.php?id=" + delete_id;
+	var delete_url = "shortcut_unit.php?action=delete&id=" + delete_id;
 	var xmlhttp;
 	if (window.XMLHttpRequest){
 		xmlhttp = new XMLHttpRequest();
@@ -140,7 +143,7 @@ function update_shortcut(update_id){
 	document.getElementById("shortcut_add").style.display = "none";
 	document.getElementById("shortcut_update").style.display = "";
 	document.getElementById("shortcut"+ update_id).style.color = "red";
-	var update_url = "get_shortcut_item.php?id=" + update_id;
+	var update_url = "get_shortcut_unit.php?id=" + update_id;
 	var xmlhttp;
 	var x,x_group,x_function,x_key;
 	if (window.XMLHttpRequest){
@@ -174,7 +177,7 @@ function submit_update(){
 	var encoded_function = encodeURIComponent(encodeURIComponent(update_function));
 	var encoded_shortcut = encodeURIComponent(encodeURIComponent(update_shortcut));
 	var update_id = document.getElementById("update_id").innerHTML;
-	var update_url = "update_shortcut.php?id=" + update_id + "&group=" + encoded_groupname + "&function=" + encoded_function + "&shortcut=" + encoded_shortcut;	
+	var update_url = "shortcut_unit.php?action=update&id=" + update_id + "&group=" + encoded_groupname + "&function=" + encoded_function + "&shortcut=" + encoded_shortcut;	
 	if (update_groupname == "" || update_function == "" || update_shortcut == ""){
 		result("Data Invalid!",1500);
 		return;

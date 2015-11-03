@@ -46,11 +46,10 @@
 	
 	/*output data*/
 	echo "<table id='shortcut_data' style='display:none' border='1' ></table>\n";
-	
 	echo "<br />\n";
 	
 	echo "<div class='control_board'>\n";
-	
+
 	echo "<div id='shortcut_add' style='display:none'>\n";
 	echo "<span class='input_item'>Group Name:</span><input type='text' id='groupname' name='groupname' class='input_box' /><br />\n";
 	echo "<span class='input_item'>Function:</span><input type='text' id='function'  name='function' class='input_box' /><br />\n";
