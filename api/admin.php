@@ -25,7 +25,7 @@
 	echo "\t<meta content='IE=edge' http-equiv='X-UA-Compatible'>";
 	echo "\t<title>Data Import - Logged in as " . $username . "</title>";
 	echo "\t<link rel='stylesheet' type='text/css' href='../css/bootstrap.css'>";
-	echo "\t<link rel='stylesheet' type='text/css' href='../css/font-awesome.min.css'>";
+	echo "\t<link rel='stylesheet' type='text/css' href='../css/font-awesome.css'>";
 	echo "\t<link rel='stylesheet' type='text/css' href='../css/admin.css'>";
 	echo "\t<script src='../js/admin.js'></script>";
 	echo "</head>";
