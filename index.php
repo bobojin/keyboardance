@@ -17,6 +17,7 @@
 	echo "<head>\n";
 	echo "\t<meta charset='UTF-8'>\n";
 	echo "\t<meta content='IE=edge' http-equiv='X-UA-Compatible'>\n";
+	echo "\t<link rel='shortcut icon' href='favicon.ico' />\n";
 	echo "\t<title>" . $title_hp_text . "</title>\n";
 	echo "\t<link rel='stylesheet' type='text/css' href='css/main.css'>\n";
 	echo "</head>\n";

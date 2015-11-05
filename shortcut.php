@@ -7,6 +7,7 @@
 	function invalid_id_output($title, $content){
 		echo "\t<title>Invalid ID - Keyboardance</title>\n";
 		echo "\t<link rel='stylesheet' type='text/css' href='css/main.css'>\n";
+		echo "\t<link rel='shortcut icon' href='favicon.ico' />\n";
 		echo "</head>\n";
 		echo "<body>\n";
 		echo "\t<div class='box_header_hp'>";
@@ -46,6 +47,7 @@
 			$row_title_name = mysql_fetch_array($title_name);
 			echo "\t<title>" . $row_title_name['name'] . " - Keyboardance</title>\n";
 			echo "\t<link rel='stylesheet' type='text/css' href='css/main.css'>\n";
+			echo "\t<link rel='shortcut icon' href='favicon.ico' />\n";
 			echo "</head>\n";
 			echo "<body>\n";
 			

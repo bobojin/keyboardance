@@ -18,6 +18,7 @@
 	echo "\t<meta content='IE=edge' http-equiv='X-UA-Compatible'>\n";
 	echo "\t<title>Search Results - Keyboardance</title>\n";
 	echo "\t<link rel='stylesheet' type='text/css' href='css/main.css'>\n";
+	echo "\t<link rel='shortcut icon' href='favicon.ico' />\n";
 	echo "</head>\n";
 	echo "<body>\n";
 	
