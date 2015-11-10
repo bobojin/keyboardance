@@ -10,6 +10,9 @@
 		echo "\t<link rel='shortcut icon' href='favicon.ico' />\n";
 		echo "</head>\n";
 		echo "<body>\n";
+		
+		include_once("analyticstracking.php");
+		
 		echo "\t<div class='box_header_hp'>";
 		echo "\t\t<div class='return_sc'><a href='index.php'>" . $return_text . "</a></div>\n";
 		echo "\t\t<div class='header_hp'>\n";
@@ -50,6 +53,8 @@
 			echo "\t<link rel='shortcut icon' href='favicon.ico' />\n";
 			echo "</head>\n";
 			echo "<body>\n";
+			
+			include_once("analyticstracking.php");
 			
 			/*visited count*/
 			mysql_query("UPDATE shortcut_list SET count = count+1 WHERE id = $sid");
