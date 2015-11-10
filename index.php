@@ -23,7 +23,7 @@
 	echo "</head>\n";
 	echo "<body>\n";
 	
-	include_once("analyticstracking.php");
+	include_once('api/analyticstracking.php');
 	
 	echo "\t<div class='box_header_hp'><div class='header_hp'>\n";
 	

@@ -22,7 +22,7 @@
 	echo "</head>\n";
 	echo "<body>\n";
 	
-	include_once("analyticstracking.php");
+	include_once('api/analyticstracking.php');
 	
 	$keyword = isset($_POST['keyword'])?$_POST['keyword']:"";
 	$tag = isset($_GET['tag'])?$_GET['tag']:"";
