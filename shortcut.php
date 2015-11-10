@@ -1,7 +1,7 @@
 <?php
-	
+
+	include 'api/display_text.php';	
 	include 'api/connect.php';
-	include 'api/display_text.php';
 
 	/*invalid id output*/
 	function invalid_id_output($title, $content){
@@ -19,8 +19,8 @@
 	}
 	
 	/*tags output*/
-	function tags_output($tags){
-		echo "\t\t\t<div class='tag_sc'><span>" . $tag_sc_text;
+	function tags_output($tags, $tag_sc_text_cp){
+		echo "\t\t\t<div class='tag_sc'><span>" . $tag_sc_text_cp;
 		$tags_array = explode(", ", $tags);
 		foreach($tags_array as $tag){
 			echo "<a href='search.php?tag=" . $tag . "' title='$tag'>" . $tag . "</a>"; 			
@@ -62,7 +62,7 @@
 			$row_name = mysql_fetch_array($result_name);
 			echo "\t\t\t<h2>" . $row_name['name'] . "</h2>\n";
 			
-			tags_output($row_name['tags']);
+			tags_output($row_name['tags'],$tag_sc_text);
 			
 			echo "\t\t\t<div class='count_sc'><span>" . $visit_count_sc_text . $row_name['count'] . "</span></div>\n";
 			echo "\t\t</div>\n\t</div>\n";

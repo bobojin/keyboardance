@@ -22,8 +22,8 @@
 	echo "</head>\n";
 	echo "<body>\n";
 	
-	$keyword = $_POST['keyword'];
-	$tag = $_GET['tag'];
+	$keyword = isset($_POST['keyword'])?$_POST['keyword']:"";
+	$tag = isset($_GET['tag'])?$_GET['tag']:"";
 	
 	/*save search history*/
 	mysql_query("INSERT INTO keyword_history (keyword,time) VALUES ('$keyword',NOW())");
