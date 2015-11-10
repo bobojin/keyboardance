@@ -32,16 +32,16 @@
 	echo "<body>";
 	
 	echo "<div class='select_board'>\n";
-	echo "<h3>Select Product</h3>";
+	echo "<h3>选择应用</h3>";
 	
 	/*get data*/
 	$result = mysql_query("SELECT name,id FROM shortcut_list ORDER BY name");
 	echo "<select id='selectbox' onchange='get_shortcut_data(this.value)'>\n";
-	echo "\t<option value='0'> - select - </option>\n";
+	echo "\t<option value='0'> - 请选择 - </option>\n";
 	while($row = mysql_fetch_array($result)){
 		echo "\t<option value='" . $row['id'] . "' >" . $row['name'] . "</option>\n";
 	}
-	echo "</select>&nbsp;&nbsp;&nbsp;<a href='../index.php' id='view_url' target='_blank' >Visit</a><br />\n";
+	echo "</select>&nbsp;&nbsp;&nbsp;<a href='../index.php' id='view_url' target='_blank' >查看</a><br />\n";
 	echo "</div>\n";
 	
 	/*output data*/

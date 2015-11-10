@@ -26,7 +26,7 @@ function get_shortcut_data(shortcut_id){
 	}
 	xmlhttp.onreadystatechange = function(){
 		if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
-			txt = "<tr><th>ID</th><th class=\"th_width\">Group</th><th class=\"th_width\">Function</th><th class=\"th_width\">Key Input</th><th>Edit</th><th>Delete</th></tr>";
+			txt = "<tr><th>编号</th><th class=\"th_width\">分组</th><th class=\"th_width\">功能</th><th class=\"th_width\">快捷键</th><th>编辑</th><th>删除</th></tr>";
 			x = xmlhttp.responseXML.documentElement.getElementsByTagName("shortcut");		
 			if (x.length == 0){
 				document.getElementById("shortcut_data").style.display = "";
@@ -62,9 +62,9 @@ function add_shortcut(){
 	var add_function = document.getElementById("function").value.replace(/(^\s*)|(\s*$)/g,'');
 	var add_shortcut = document.getElementById("shortcut").value.replace(/(^\s*)|(\s*$)/g,'');
 	var add_id = document.getElementById("selectbox").value;
-	var encoded_groupname = encodeURIComponent(encodeURIComponent(add_groupname));
-	var encoded_function = encodeURIComponent(encodeURIComponent(add_function));
-	var encoded_shortcut = encodeURIComponent(encodeURIComponent(add_shortcut));
+	var encoded_groupname = encodeURIComponent(add_groupname);
+	var encoded_function = encodeURIComponent(add_function);
+	var encoded_shortcut = encodeURIComponent(add_shortcut);
 	var add_url = "shortcut_unit.php?action=add&id=" + add_id + "&group=" + encoded_groupname + "&function=" + encoded_function + "&shortcut=" + encoded_shortcut;
 	if (add_groupname == "" || add_function == "" || add_shortcut == ""){
 		result("Data Invalid!",1500);
@@ -173,9 +173,9 @@ function submit_update(){
 	var update_groupname = document.getElementById("update_groupname").value.replace(/(^\s*)|(\s*$)/g,'');
 	var update_function = document.getElementById("update_function").value.replace(/(^\s*)|(\s*$)/g,'');
 	var update_shortcut = document.getElementById("update_shortcut").value.replace(/(^\s*)|(\s*$)/g,'');
-	var encoded_groupname = encodeURIComponent(encodeURIComponent(update_groupname));
-	var encoded_function = encodeURIComponent(encodeURIComponent(update_function));
-	var encoded_shortcut = encodeURIComponent(encodeURIComponent(update_shortcut));
+	var encoded_groupname = encodeURIComponent(update_groupname);
+	var encoded_function = encodeURIComponent(update_function);
+	var encoded_shortcut = encodeURIComponent(update_shortcut);
 	var update_id = document.getElementById("update_id").innerHTML;
 	var update_url = "shortcut_unit.php?action=update&id=" + update_id + "&group=" + encoded_groupname + "&function=" + encoded_function + "&shortcut=" + encoded_shortcut;	
 	if (update_groupname == "" || update_function == "" || update_shortcut == ""){

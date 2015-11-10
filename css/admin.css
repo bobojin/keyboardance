@@ -10,6 +10,9 @@ th, td {
 .th_width {
 	min-width: 120px;
 }
+h3 {
+	font-size: 22px;
+}
 #result {
 	padding-top: 5px;
 	color: blue;
@@ -25,13 +28,12 @@ th, td {
 	text-align: center;
 }
 .select_board {
-	height: 95px;
+	height: 93px;
 	width: 100%;
 	position: fixed;
 	top: 0px;
 	left: 0px;
-	border-bottom:1px solid #bababa;
-	background-color: #e3e3e3;
+	background-color: #f9f9f9;
 	padding-left: 100px;
 	padding-top: 18px;
 }

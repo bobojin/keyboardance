@@ -52,7 +52,7 @@
 	
 	mysql_close($con);
 	
-	echo "\t<div class='footer'>Powered by Bobo Jin · <a href='api/admin.php' target='_blank'>Login</a></div>\n";
+	echo "\t<div class='footer'>Powered by Bobo Jin · <a href='mailto:806600006@qq.com?subject=Feedback of Keyboardance'>Feedback</a> · <a href='api/admin.php' target='_blank'>Login</a></div>\n";
 	echo "</body>\n";
 	echo "</html>";
 ?>
