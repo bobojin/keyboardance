@@ -168,6 +168,9 @@ a:visited {
 	min-width: 200px;
 	color: rgb(31, 36, 41);
 }
+.function_recom {
+	color: #2b46f8;
+}
 .key_sc {
 	color: rgb(172, 178, 183);
 	float: right;

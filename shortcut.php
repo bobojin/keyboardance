@@ -50,6 +50,7 @@
 			$row_title_name = mysql_fetch_array($title_name);
 			echo "\t<title>" . $row_title_name['name'] . " - Keyboardance</title>\n";
 			echo "\t<link rel='stylesheet' type='text/css' href='css/main.css'>\n";
+			echo "\t<link rel='stylesheet' type='text/css' href='css/font-awesome.css'>";
 			echo "\t<link rel='shortcut icon' href='favicon.ico' />\n";
 			echo "</head>\n";
 			echo "<body>\n";
@@ -81,10 +82,15 @@
 				while($row = mysql_fetch_array($result)){
 					$groupname = $row['group_name'];
 					echo "\t\t<div class='group_section_sc'><h3>" . $groupname . "</h3>\n";	
-					$result_data = mysql_query("SELECT * FROM shortcut_data WHERE shortcut_id = $sid AND group_name LIKE '$groupname' ");
+					$result_data = mysql_query("SELECT function,key_input,recom FROM shortcut_data WHERE shortcut_id = $sid AND group_name LIKE '$groupname' ");
 					/*each group*/
 					while($row_data = mysql_fetch_array($result_data)){
-						echo "\t\t<div class='key_line_sc'><span class='function_sc'>" . $row_data['function'] . "</span> <span class='key_sc'>" . $row_data['key_input'] . "</span></div>";
+						if ($row_data['recom'] == 0){
+							echo "\t\t<div class='key_line_sc'><span class='function_sc'>" . $row_data['function'] . "</span> <span class='key_sc'>" . $row_data['key_input'] . "</span></div>";
+						}
+						else{
+							echo "\t\t<div class='key_line_sc'><span class='function_sc function_recom'>" . $row_data['function'] . "&nbsp;&nbsp;<i class='fa fa-keyboard-o'></i></span> <span class='key_sc'>" . $row_data['key_input'] . "</span></div>";
+						}
 					}
 					echo "\t\t</div>";		
 				}	
