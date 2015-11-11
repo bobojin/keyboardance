@@ -101,26 +101,28 @@
 			$os_count_result = mysql_query("SELECT id FROM shortcut_data WHERE shortcut_id = $sid AND os LIKE '$os'");
 			$os_count = mysql_num_rows($os_count_result);
 			
-			$group_query = "SELECT DISTINCT(group_name) FROM shortcut_data WHERE shortcut_id = $sid";
-			$group_os_query = "SELECT DISTINCT(group_name) FROM shortcut_data WHERE shortcut_id = $sid AND os LIKE '$os'";
+			$group_sql = "SELECT DISTINCT(group_name) FROM shortcut_data WHERE shortcut_id = $sid";
+			$group_os_sql = "SELECT DISTINCT(group_name) FROM shortcut_data WHERE shortcut_id = $sid AND os LIKE '$os'";
 			
 			/*get data by group*/
-			$result = $os_count ? mysql_query($group_os_query) : mysql_query($group_query);
+			$result = $os_count ? mysql_query($group_os_sql) : mysql_query($group_sql);
 			if (mysql_num_rows($result)){				
 				echo "\t<div><div class='content_sc'>\n";	
 				while($row = mysql_fetch_array($result)){
 					$groupname = $row['group_name'];
-					echo "\t\t<div class='group_section_sc'><h3>" . $groupname . "</h3>\n";	
-										
-					$result_data = $os_count ? mysql_query("SELECT function,key_input,recom FROM shortcut_data WHERE shortcut_id = $sid AND os LIKE '$os' AND group_name LIKE '$groupname' ") : mysql_query("SELECT function,key_input,recom FROM shortcut_data WHERE shortcut_id = $sid AND group_name LIKE '$groupname' ");
-					
+					$group_data_sql = "SELECT function,key_input,recom FROM shortcut_data WHERE shortcut_id = $sid AND group_name LIKE '$groupname' ";
+					$group_data_os_sql = "SELECT function,key_input,recom FROM shortcut_data WHERE shortcut_id = $sid AND os LIKE '$os' AND group_name LIKE '$groupname' ";
+					echo "\t\t<div class='group_section_sc'><h3>" . $groupname . "</h3>\n";							
+					$result_data = $os_count ? mysql_query($group_data_os_sql) : mysql_query($group_data_sql);
 					/*each group*/
 					while($row_data = mysql_fetch_array($result_data)){
 						if ($row_data['recom'] == 0){
-							echo "\t\t<div class='key_line_sc'><span class='function_sc'>" . $row_data['function'] . "</span> <span class='key_sc'>" . $row_data['key_input'] . "</span></div>";
+							echo "\t\t<div class='key_line_sc'><span class='function_sc'>" . $row_data['function'] . "</span>";
+							echo "<span class='key_sc'>" . $row_data['key_input'] . "</span></div>";
 						}
 						else{
-							echo "\t\t<div class='key_line_sc'><span class='function_sc function_recom'>" . $row_data['function'] . "&nbsp;&nbsp;<i class='fa fa-keyboard-o'></i></span> <span class='key_sc'>" . $row_data['key_input'] . "</span></div>";
+							echo "\t\t<div class='key_line_sc'><span class='function_sc function_recom'>" . $row_data['function'] . "&nbsp;&nbsp;<i class='fa fa-keyboard-o'></i></span>";
+							echo "<span class='key_sc'>" . $row_data['key_input'] . "</span></div>";
 						}
 					}
 					echo "\t\t</div>";		
