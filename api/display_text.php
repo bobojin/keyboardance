@@ -6,7 +6,7 @@
 	$return_text = "返回";
 	
 	/*homepage*/
-	$title_hp_text = "Keyboardance - Beta";
+	$title_hp_text = "Keyboardance - 快捷键收录";
 	$search_placeholder_hp_text = "输入名称后回车";
 	$search_button_hp_text = "搜索";
 	$title_content_hp_text = "=TOP5推荐=";

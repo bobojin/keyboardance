@@ -16,7 +16,9 @@
 	echo "<head>\n";
 	echo "\t<meta charset='UTF-8'>\n";
 	echo "\t<meta content='IE=edge' http-equiv='X-UA-Compatible'>\n";
-	echo "\t<title>Search Results - Keyboardance</title>\n";
+	echo "\t<title>搜索结果 - Keyboardance</title>\n";
+	echo "\t<meta name='keywords' content='keyboardance, 键盘舞步, 快捷键, 快捷键大全, shortcut' />\n";
+	echo "\t<meta name='description' content='KeyboarDance.com是收录各种快捷键信息的一个网站。' />\n";
 	echo "\t<link rel='stylesheet' type='text/css' href='css/main.css'>\n";
 	echo "\t<link rel='shortcut icon' href='favicon.ico' />\n";
 	echo "</head>\n";

@@ -6,11 +6,11 @@
 	
 	/*output string into keyboard style*/
 	function keyboard_output($input){
-		echo "\t\t<div class='keyboard'>\n\t\t\t";
+		echo "\t\t<div class='keyboard'>\n";
 		for ($i=0;$i<strlen($input);$i++){
-			echo "<div class='letter'>" . $input[$i] . "</div>";
+			echo "\t\t\t<div class='letter'>" . $input[$i] . "</div>\n";
 		}
-		echo "\n\t\t\t<div class='clear'></div>\n\t\t</div>\n";
+		echo "\t\t\t<div class='clear'></div>\n\t\t</div>\n";
 	}
 	
 	echo "<html lang='zh-cn'>\n";
@@ -19,6 +19,8 @@
 	echo "\t<meta content='IE=edge' http-equiv='X-UA-Compatible'>\n";
 	echo "\t<link rel='shortcut icon' href='favicon.ico' />\n";
 	echo "\t<title>" . $title_hp_text . "</title>\n";
+	echo "\t<meta name='keywords' content='keyboardance, 键盘舞步, 快捷键, 快捷键大全, shortcut' />\n";
+	echo "\t<meta name='description' content='KeyboarDance.com是收录各种快捷键信息的一个网站。' />\n";
 	echo "\t<link rel='stylesheet' type='text/css' href='css/main.css'>\n";
 	echo "</head>\n";
 	echo "<body>\n";
