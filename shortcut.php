@@ -2,6 +2,29 @@
 
 	include 'api/display_text.php';	
 	include 'api/connect.php';
+	
+	/*get user os*/
+	function get_user_os(){
+		if(!empty($_SERVER['HTTP_USER_AGENT'])){
+			$user_os=$_SERVER['HTTP_USER_AGENT'];
+			if(preg_match('/win/i',$user_os)){
+				$user_os='windows';
+			}
+			else if(preg_match('/linux/i',$user_os)){
+				$user_os='windows';
+			}
+			else if(preg_match('/unix/i',$user_os)){
+				$user_os='windows';
+			}
+			else if(preg_match('/mac/i',$user_os)){
+				$user_os='mac';
+			}
+			else{
+				$user_os='mac'; //if can't identify, use mac as default
+			}
+			return $user_os;
+		}
+	}
 
 	/*invalid id output*/
 	function invalid_id_output($title, $content){
@@ -73,16 +96,19 @@
 			echo "\t\t\t<div class='count_sc'><span>" . $visit_count_sc_text . $row_name['count'] . "</span></div>\n";
 			echo "\t\t</div>\n\t</div>\n";
 			
+			/*os type */
+			$os = get_user_os();
+			$os_count_result = mysql_query("SELECT id FROM shortcut_data WHERE shortcut_id = $sid AND os LIKE '$os'");
+			$os_count = mysql_num_rows($os_count_result);
+			
 			/*get data by group*/
-			$result = mysql_query("SELECT DISTINCT(group_name) FROM shortcut_data WHERE shortcut_id = $sid");
-			if (mysql_num_rows($result)){
-				
+			$result = $os_count ? mysql_query("SELECT DISTINCT(group_name) FROM shortcut_data WHERE shortcut_id = $sid AND os LIKE '$os'") : mysql_query("SELECT DISTINCT(group_name) FROM shortcut_data WHERE shortcut_id = $sid");
+			if (mysql_num_rows($result)){				
 				echo "\t<div><div class='content_sc'>\n";	
-				/*get data by group*/
 				while($row = mysql_fetch_array($result)){
 					$groupname = $row['group_name'];
 					echo "\t\t<div class='group_section_sc'><h3>" . $groupname . "</h3>\n";	
-					$result_data = mysql_query("SELECT function,key_input,recom FROM shortcut_data WHERE shortcut_id = $sid AND group_name LIKE '$groupname' ");
+					$result_data = $os_count ? mysql_query("SELECT function,key_input,recom FROM shortcut_data WHERE shortcut_id = $sid AND os LIKE '$os' AND group_name LIKE '$groupname' ") : mysql_query("SELECT function,key_input,recom FROM shortcut_data WHERE shortcut_id = $sid AND group_name LIKE '$groupname' ");
 					/*each group*/
 					while($row_data = mysql_fetch_array($result_data)){
 						if ($row_data['recom'] == 0){
