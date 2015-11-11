@@ -101,14 +101,19 @@
 			$os_count_result = mysql_query("SELECT id FROM shortcut_data WHERE shortcut_id = $sid AND os LIKE '$os'");
 			$os_count = mysql_num_rows($os_count_result);
 			
+			$group_query = "SELECT DISTINCT(group_name) FROM shortcut_data WHERE shortcut_id = $sid";
+			$group_os_query = "SELECT DISTINCT(group_name) FROM shortcut_data WHERE shortcut_id = $sid AND os LIKE '$os'";
+			
 			/*get data by group*/
-			$result = $os_count ? mysql_query("SELECT DISTINCT(group_name) FROM shortcut_data WHERE shortcut_id = $sid AND os LIKE '$os'") : mysql_query("SELECT DISTINCT(group_name) FROM shortcut_data WHERE shortcut_id = $sid");
+			$result = $os_count ? mysql_query($group_os_query) : mysql_query($group_query);
 			if (mysql_num_rows($result)){				
 				echo "\t<div><div class='content_sc'>\n";	
 				while($row = mysql_fetch_array($result)){
 					$groupname = $row['group_name'];
 					echo "\t\t<div class='group_section_sc'><h3>" . $groupname . "</h3>\n";	
+										
 					$result_data = $os_count ? mysql_query("SELECT function,key_input,recom FROM shortcut_data WHERE shortcut_id = $sid AND os LIKE '$os' AND group_name LIKE '$groupname' ") : mysql_query("SELECT function,key_input,recom FROM shortcut_data WHERE shortcut_id = $sid AND group_name LIKE '$groupname' ");
+					
 					/*each group*/
 					while($row_data = mysql_fetch_array($result_data)){
 						if ($row_data['recom'] == 0){
