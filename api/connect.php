@@ -1,8 +1,6 @@
 <?php
 	
-	$con = mysql_connect("127.0.0.1","root","123456");
-	
-//	$con = mysql_connect("localhost","root","StNk1211");
+	$con = mysql_connect("127.0.0.1","root","StNk1211");
 	
 	if (!$con){
 		die('Could not connect: ' . mysql_error());
