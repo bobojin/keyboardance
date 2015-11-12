@@ -54,7 +54,9 @@
 	echo "<span class='input_item'>Group Name:</span><input type='text' id='groupname' name='groupname' class='input_box' /><br />\n";
 	echo "<span class='input_item'>Function:</span><input type='text' id='function'  name='function' class='input_box' /><br />\n";
 	echo "<span class='input_item'>Shortcut:</span><input type='text' id='shortcut'  name='shortcut' class='input_box' /><br />\n";
-	echo "<input type='button' id='submit_button' class='submit_button' value='Add to' onclick='add_shortcut()' />&nbsp;<input type='button' value='Clear' onclick='clear_input()' />\n";
+	echo "<input type='button' id='submit_button' class='submit_button' value='Add to' onclick='add_shortcut()' />\n";
+	echo "<input type='button' value='Clear' onclick='clear_input()' />\n";
+	echo "<input type='button' value='Group Add...' onclick='add_shortcut_group()' />\n";
 	echo "</div>\n";
 	
 	echo "<div id='shortcut_update' style='display:none'>\n";
@@ -62,7 +64,8 @@
 	echo "<span class='input_item'>Group Name:</span><input type='text' id='update_groupname' name='groupname' class='input_box' /><br />\n";
 	echo "<span class='input_item'>Function:</span><input type='text' id='update_function'  name='function' class='input_box' /><br />\n";
 	echo "<span class='input_item'>Shortcut:</span><input type='text' id='update_shortcut'  name='shortcut' class='input_box' /><br />\n";
-	echo "<input type='button' id='submit_button' class='submit_button' value='Save' onclick='submit_update()' />&nbsp;<input type='button' value='Cancel' onclick='close_update()' />\n";
+	echo "<input type='button' id='submit_button' class='submit_button' value='Save' onclick='submit_update()' />\n";
+	echo "<input type='button' value='Cancel' onclick='close_update()' />\n";
 	echo "</div>\n";
 	
 	echo "<div id='result' style='display:none' >Result:</div>\n";
