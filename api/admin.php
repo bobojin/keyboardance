@@ -68,6 +68,12 @@
 	echo "<input type='button' value='Cancel' onclick='close_update()' />\n";
 	echo "</div>\n";
 	
+	echo "<div id='shortcut_group_add' style='display:none'>\n";
+	echo "<span class='input_item'>Group:</span><br /><textarea id='add_group_data'/></textarea><br />\n";
+	echo "<input type='button' id='submit_button' class='submit_button' value='Add to' onclick='submit_group_add()' />\n";
+	echo "<input type='button' value='Cancel' onclick='end_group_add()' />\n";
+	echo "</div>\n";
+	
 	echo "<div id='result' style='display:none' >Result:</div>\n";
 	
 	echo "</div>\n";

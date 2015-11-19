@@ -262,3 +262,35 @@ function set_cookie(name,value,day){
     s_date.setDate(s_date.getDate()+day);       
     document.cookie=name+'='+value+';expires='+s_date;
 }
+
+/*choose to add data by group*/
+function add_shortcut_group(){
+	document.getElementById("shortcut_group_add").style.display = "";
+	document.getElementById("shortcut_add").style.display = "none";
+	document.getElementById("shortcut_update").style.display = "none";
+}
+
+/*cancel to add data by group*/
+function end_group_add(){
+	document.getElementById("add_group_data").value = "";
+	document.getElementById("shortcut_group_add").style.display = "none";
+	document.getElementById("shortcut_add").style.display = "";	
+}
+
+/*add data by group*/
+function submit_group_add(){
+	var group_input = document.getElementById("add_group_data").value;
+	var group_input_array = group_input.split("\n"); 
+	var group_len = group_input_array.length;
+	var group_input_name = group_input_array[0];
+	var group_split = group_input_array[1];
+	var group_input_function, group_input_shortcut;
+	
+	for (var i=2;i<=group_len;i++){
+		var shortcut_array = group_input_array[i].split(group_split);
+		group_input_function = shortcut_array[0].replace(/(^\s*)|(\s*$)/g,'');
+		group_input_shortcut = shortcut_array[1].replace(/(^\s*)|(\s*$)/g,'');
+	}
+	
+	result(group_input_shortcut,2000);
+}
