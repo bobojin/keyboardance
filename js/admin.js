@@ -101,6 +101,7 @@ function add_shortcut(){
 				document.getElementById("shortcut_data").appendChild(new_node);
 				document.getElementById("function").value = "";
 				document.getElementById("shortcut").value = "";
+				location.href = "#shortcut" + x; 
 				result("Success!",1500);		
 			}			
 		}
@@ -111,7 +112,7 @@ function add_shortcut(){
 
 /*delete shortcut item*/
 function delete_shortcut(delete_id){
-	close_update();	
+	close_update();
 	var delete_url = "shortcut_unit.php?action=delete&id=" + delete_id;
 	var xmlhttp;
 	if (window.XMLHttpRequest){
@@ -227,6 +228,7 @@ function close_update(){
 	document.getElementById("shortcut_add").style.display = "";
 	document.getElementById("shortcut_update").style.display = "none";
 	document.getElementById("update_id").innerHTML = "0";
+	document.getElementById("shortcut_group_add").style.display = "none";
 }
 
 /*clear all input*/
@@ -281,16 +283,68 @@ function end_group_add(){
 function submit_group_add(){
 	var group_input = document.getElementById("add_group_data").value;
 	var group_input_array = group_input.split("\n"); 
-	var group_len = group_input_array.length;
+	
 	var group_input_name = group_input_array[0];
-	var group_split = group_input_array[1];
-	var group_input_function, group_input_shortcut;
 	
-	for (var i=2;i<=group_len;i++){
-		var shortcut_array = group_input_array[i].split(group_split);
-		group_input_function = shortcut_array[0].replace(/(^\s*)|(\s*$)/g,'');
-		group_input_shortcut = shortcut_array[1].replace(/(^\s*)|(\s*$)/g,'');
+	for (var i=2;i<=group_input_array.length;i++){
+		var shortcut_array = group_input_array[i].split(group_input_array[1]);
+		var group_input_function = shortcut_array[0].replace(/(^\s*)|(\s*$)/g,'');
+		var group_input_shortcut = shortcut_array[1].replace(/(^\s*)|(\s*$)/g,'');
+		group_add_shortcut(group_input_name,group_input_function,group_input_shortcut);
 	}
-	
-	result(group_input_shortcut,2000);
+	document.getElementById("add_group_data").value = "";
+}
+
+/*add shortcut item*/
+function group_add_shortcut(group_name,group_function,group_shortcut){
+	var add_groupname = group_name;
+	var add_function = group_function;
+	var add_shortcut = group_shortcut;
+	var add_id = document.getElementById("selectbox").value;
+	var encoded_groupname = encodeURIComponent(add_groupname);
+	var encoded_function = encodeURIComponent(add_function);
+	var encoded_shortcut = encodeURIComponent(add_shortcut);
+	var add_url = "shortcut_unit.php?action=add&id=" + add_id + "&group=" + encoded_groupname + "&function=" + encoded_function + "&shortcut=" + encoded_shortcut;
+	if (add_groupname == "" || add_function == "" || add_shortcut == ""){
+		result("Data Invalid!",1500);
+		return;
+	}
+	if (add_groupname.length > 45 || add_function.length > 90 || add_shortcut.length > 45){
+		result("Too long (length limited at 45) !",3000);
+		return;
+	}
+	var xmlhttp,x;
+	var new_node,new_txt;
+	if (window.XMLHttpRequest){
+		xmlhttp = new XMLHttpRequest();
+	}
+	else{
+		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange = function(){
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200){		
+			x = xmlhttp.responseText;		
+			if (x == "failed"){			
+				result("Failed!",3000);
+			}
+			else{
+				new_node = document.createElement("tr");
+				new_node.id = "shortcut" + x;
+				new_txt = "<td>" + x + "</td>";
+				new_txt = new_txt + "<td>" + group_name + "</td>";
+				new_txt = new_txt + "<td>" + group_function + "</td>";
+				new_txt = new_txt + "<td>" + group_shortcut + "</td>";
+				new_txt = new_txt + "<td class='text_align_center'><a href='javascript:void(0)' onclick='update_shortcut(" + x + ")' /><i class='fa fa-pencil-square-o'></i></a></td>";
+				new_txt = new_txt + "<td class='text_align_center'><a href='javascript:void(0)' onclick='delete_shortcut(" + x + ")' /><i class='fa fa-trash-o'></i></a></td></tr>";		
+				new_node.innerHTML = new_txt;							
+				document.getElementById("shortcut_data").appendChild(new_node);
+				document.getElementById("function").value = "";
+				document.getElementById("shortcut").value = "";
+				location.href = "#shortcut" + x; 
+				result("Success!",1500);		
+			}			
+		}
+	}
+	xmlhttp.open("GET", add_url, false);
+	xmlhttp.send();
 }
