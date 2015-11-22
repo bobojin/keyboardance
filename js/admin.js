@@ -285,17 +285,28 @@ function submit_group_add(){
 	var group_input_array = group_input.split("\n"); 
 	
 	var group_input_name = group_input_array[0];
+	var group_input_location = group_input_array[2];
 	
-	for (var i=2;i<=group_input_array.length;i++){
-		var shortcut_array = group_input_array[i].split(group_input_array[1]);
-		var group_input_function = shortcut_array[0].replace(/(^\s*)|(\s*$)/g,'');
-		var group_input_shortcut = shortcut_array[1].replace(/(^\s*)|(\s*$)/g,'');
-		group_add_shortcut(group_input_name,group_input_function,group_input_shortcut);
+	if (group_input_location == 0){  //function on the left
+		for (var i=3;i<=group_input_array.length;i++){
+			var shortcut_array = group_input_array[i].split(group_input_array[1]);
+			var group_input_function = shortcut_array[0].replace(/(^\s*)|(\s*$)/g,'');
+			var group_input_shortcut = shortcut_array[1].replace(/(^\s*)|(\s*$)/g,'');
+			group_add_shortcut(group_input_name,group_input_function,group_input_shortcut);
+		}
+	}
+	else{  //function on the right
+		for (var i=3;i<=group_input_array.length;i++){
+			var shortcut_array = group_input_array[i].split(group_input_array[1]);
+			var group_input_function = shortcut_array[1].replace(/(^\s*)|(\s*$)/g,'');
+			var group_input_shortcut = shortcut_array[0].replace(/(^\s*)|(\s*$)/g,'');
+			group_add_shortcut(group_input_name,group_input_function,group_input_shortcut);
+		}
 	}
 	document.getElementById("add_group_data").value = "";
 }
 
-/*add shortcut item*/
+/*add shortcut item by group*/
 function group_add_shortcut(group_name,group_function,group_shortcut){
 	var add_groupname = group_name;
 	var add_function = group_function;
