@@ -229,6 +229,7 @@ function close_update(){
 	document.getElementById("shortcut_update").style.display = "none";
 	document.getElementById("update_id").innerHTML = "0";
 	document.getElementById("shortcut_group_add").style.display = "none";
+	document.getElementById("add_group_data").value = "";
 }
 
 /*clear all input*/
@@ -282,6 +283,8 @@ function end_group_add(){
 /*add data by group*/
 function submit_group_add(){
 	var group_input = document.getElementById("add_group_data").value;
+	document.getElementById("add_group_data").value = "";
+	
 	var group_input_array = group_input.split("\n"); 
 	
 	var group_input_name = group_input_array[0];
@@ -303,7 +306,6 @@ function submit_group_add(){
 			group_add_shortcut(group_input_name,group_input_function,group_input_shortcut);
 		}
 	}
-	document.getElementById("add_group_data").value = "";
 }
 
 /*add shortcut item by group*/
