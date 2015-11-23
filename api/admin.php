@@ -69,7 +69,7 @@
 	echo "</div>\n";
 	
 	echo "<div id='shortcut_group_add' style='display:none'>\n";
-	echo "<span class='input_item'>Group:</span><br /><textarea id='add_group_data'/></textarea><br />\n";
+	echo "<span><b>格式</b>（第一行:组名称 - 第二行:分隔符 - 第三行:数据内容左右顺序 - 第四行:数据）</span><br /><textarea id='add_group_data' placeholder='请按照格式输入'/></textarea><br />\n";
 	echo "<input type='button' id='submit_button' class='submit_button' value='Add to' onclick='submit_group_add()' />\n";
 	echo "<input type='button' value='Cancel' onclick='end_group_add()' />\n";
 	echo "</div>\n";

@@ -283,29 +283,24 @@ function end_group_add(){
 /*add data by group*/
 function submit_group_add(){
 	var group_input = document.getElementById("add_group_data").value;
-	document.getElementById("add_group_data").value = "";
-	
 	var group_input_array = group_input.split("\n"); 
-	
 	var group_input_name = group_input_array[0];
 	var group_input_location = group_input_array[2];
-	
-	if (group_input_location == 0){  //function on the left
-		for (var i=3;i<=group_input_array.length;i++){
-			var shortcut_array = group_input_array[i].split(group_input_array[1]);
-			var group_input_function = shortcut_array[0].replace(/(^\s*)|(\s*$)/g,'');
-			var group_input_shortcut = shortcut_array[1].replace(/(^\s*)|(\s*$)/g,'');
-			group_add_shortcut(group_input_name,group_input_function,group_input_shortcut);
+	for (var i=3;i<group_input_array.length;i++){
+		var shortcut_array = group_input_array[i].split(group_input_array[1]);
+		if(shortcut_array.length != 2){
+			var error_line = i+1;
+			var error_output = "Line" + error_line + ": Error!";
+			result(error_output,3000);
+			document.getElementById("add_group_data").focus();
+			return;
 		}
+		var group_input_function = shortcut_array[(group_input_location == 0)?0:1].replace(/(^\s*)|(\s*$)/g,'');
+		var group_input_shortcut = shortcut_array[(group_input_location == 0)?1:0].replace(/(^\s*)|(\s*$)/g,'');
+		group_add_shortcut(group_input_name,group_input_function,group_input_shortcut);
 	}
-	else{  //function on the right
-		for (var i=3;i<=group_input_array.length;i++){
-			var shortcut_array = group_input_array[i].split(group_input_array[1]);
-			var group_input_function = shortcut_array[1].replace(/(^\s*)|(\s*$)/g,'');
-			var group_input_shortcut = shortcut_array[0].replace(/(^\s*)|(\s*$)/g,'');
-			group_add_shortcut(group_input_name,group_input_function,group_input_shortcut);
-		}
-	}
+	document.getElementById("add_group_data").value = "";
+
 }
 
 /*add shortcut item by group*/
