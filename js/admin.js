@@ -284,8 +284,6 @@ function end_group_add(){
 function submit_group_add(){
 	var group_input = document.getElementById("add_group_data").value;
 	var group_input_array = group_input.split("\n"); 
-	var group_input_name = group_input_array[0];
-	var group_input_location = group_input_array[2];
 	for (var i=3;i<group_input_array.length;i++){
 		var shortcut_array = group_input_array[i].split(group_input_array[1]);
 		if(shortcut_array.length != 2){
@@ -295,9 +293,9 @@ function submit_group_add(){
 			document.getElementById("add_group_data").focus();
 			return;
 		}
-		var group_input_function = shortcut_array[(group_input_location == 0)?0:1].replace(/(^\s*)|(\s*$)/g,'');
-		var group_input_shortcut = shortcut_array[(group_input_location == 0)?1:0].replace(/(^\s*)|(\s*$)/g,'');
-		group_add_shortcut(group_input_name,group_input_function,group_input_shortcut);
+		var group_input_function = shortcut_array[(group_input_array[2] == 0)?0:1].replace(/(^\s*)|(\s*$)/g,'');
+		var group_input_shortcut = shortcut_array[(group_input_array[2] == 0)?1:0].replace(/(^\s*)|(\s*$)/g,'');
+		group_add_shortcut(group_input_array[0],group_input_function,group_input_shortcut);
 	}
 	document.getElementById("add_group_data").value = "";
 
