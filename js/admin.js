@@ -56,16 +56,21 @@ function get_shortcut_data(shortcut_id){
 	xmlhttp.send();
 }
 
-/*add shortcut item*/
+/*start to add shortcut item*/
 function add_shortcut(){
 	var add_groupname = document.getElementById("groupname").value.replace(/(^\s*)|(\s*$)/g,'');
 	var add_function = document.getElementById("function").value.replace(/(^\s*)|(\s*$)/g,'');
-	var add_shortcut = document.getElementById("shortcut").value.replace(/(^\s*)|(\s*$)/g,'');
+	var add_shortcut = document.getElementById("shortcut").value.replace(/(^\s*)|(\s*$)/g,'');	
+	add_shortcut_apply(add_groupname,add_function,add_shortcut,true);
+}
+
+/*add shortcut*/
+function add_shortcut_apply(group_name,func,shortcut,type){
+	var add_groupname = encodeURIComponent(group_name);
+	var add_function = encodeURIComponent(func);
+	var add_shortcut = encodeURIComponent(shortcut);
 	var add_id = document.getElementById("selectbox").value;
-	var encoded_groupname = encodeURIComponent(add_groupname);
-	var encoded_function = encodeURIComponent(add_function);
-	var encoded_shortcut = encodeURIComponent(add_shortcut);
-	var add_url = "shortcut_unit.php?action=add&id=" + add_id + "&group=" + encoded_groupname + "&function=" + encoded_function + "&shortcut=" + encoded_shortcut;
+	var add_url = "shortcut_unit.php?action=add&id=" + add_id + "&group=" + add_groupname + "&function=" + add_function + "&shortcut=" + add_shortcut;
 	if (add_groupname == "" || add_function == "" || add_shortcut == ""){
 		result("Data Invalid!",1500);
 		return;
@@ -92,9 +97,9 @@ function add_shortcut(){
 				new_node = document.createElement("tr");
 				new_node.id = "shortcut" + x;
 				new_txt = "<td>" + x + "</td>";
-				new_txt = new_txt + "<td>" + document.getElementById("groupname").value + "</td>";
-				new_txt = new_txt + "<td>" + document.getElementById("function").value + "</td>";
-				new_txt = new_txt + "<td>" + document.getElementById("shortcut").value + "</td>";
+				new_txt = new_txt + "<td>" + group_name + "</td>";
+				new_txt = new_txt + "<td>" + func + "</td>";
+				new_txt = new_txt + "<td>" + shortcut + "</td>";
 				new_txt = new_txt + "<td class='text_align_center'><a href='javascript:void(0)' onclick='update_shortcut(" + x + ")' /><i class='fa fa-pencil-square-o'></i></a></td>";
 				new_txt = new_txt + "<td class='text_align_center'><a href='javascript:void(0)' onclick='delete_shortcut(" + x + ")' /><i class='fa fa-trash-o'></i></a></td></tr>";		
 				new_node.innerHTML = new_txt;							
@@ -106,7 +111,7 @@ function add_shortcut(){
 			}			
 		}
 	}
-	xmlhttp.open("GET", add_url, true);
+	xmlhttp.open("GET", add_url, type);
 	xmlhttp.send();
 }
 
@@ -261,9 +266,9 @@ function login(){
 
 /*set cookie*/
 function set_cookie(name,value,day){   
-    var s_date=new Date();   
-    s_date.setDate(s_date.getDate()+day);       
-    document.cookie=name+'='+value+';expires='+s_date;
+	var s_date=new Date();   
+	s_date.setDate(s_date.getDate()+day);       
+	document.cookie=name+'='+value+';expires='+s_date;
 }
 
 /*choose to add data by group*/
@@ -295,62 +300,12 @@ function submit_group_add(){
 		}
 		var group_input_function = shortcut_array[(group_input_array[2] == 0)?0:1].replace(/(^\s*)|(\s*$)/g,'');
 		var group_input_shortcut = shortcut_array[(group_input_array[2] == 0)?1:0].replace(/(^\s*)|(\s*$)/g,'');
-		group_add_shortcut(group_input_array[0],group_input_function,group_input_shortcut);
+		add_shortcut_apply(group_input_array[0],group_input_function,group_input_shortcut,false);
 	}
 	document.getElementById("add_group_data").value = "";
-
 }
 
-/*add shortcut item by group*/
-function group_add_shortcut(group_name,group_function,group_shortcut){
-	var add_groupname = group_name;
-	var add_function = group_function;
-	var add_shortcut = group_shortcut;
-	var add_id = document.getElementById("selectbox").value;
-	var encoded_groupname = encodeURIComponent(add_groupname);
-	var encoded_function = encodeURIComponent(add_function);
-	var encoded_shortcut = encodeURIComponent(add_shortcut);
-	var add_url = "shortcut_unit.php?action=add&id=" + add_id + "&group=" + encoded_groupname + "&function=" + encoded_function + "&shortcut=" + encoded_shortcut;
-	if (add_groupname == "" || add_function == "" || add_shortcut == ""){
-		result("Data Invalid!",1500);
-		return;
-	}
-	if (add_groupname.length > 45 || add_function.length > 90 || add_shortcut.length > 45){
-		result("Too long (length limited at 45) !",3000);
-		return;
-	}
-	var xmlhttp,x;
-	var new_node,new_txt;
-	if (window.XMLHttpRequest){
-		xmlhttp = new XMLHttpRequest();
-	}
-	else{
-		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-	}
-	xmlhttp.onreadystatechange = function(){
-		if (xmlhttp.readyState == 4 && xmlhttp.status == 200){		
-			x = xmlhttp.responseText;		
-			if (x == "failed"){			
-				result("Failed!",3000);
-			}
-			else{
-				new_node = document.createElement("tr");
-				new_node.id = "shortcut" + x;
-				new_txt = "<td>" + x + "</td>";
-				new_txt = new_txt + "<td>" + group_name + "</td>";
-				new_txt = new_txt + "<td>" + group_function + "</td>";
-				new_txt = new_txt + "<td>" + group_shortcut + "</td>";
-				new_txt = new_txt + "<td class='text_align_center'><a href='javascript:void(0)' onclick='update_shortcut(" + x + ")' /><i class='fa fa-pencil-square-o'></i></a></td>";
-				new_txt = new_txt + "<td class='text_align_center'><a href='javascript:void(0)' onclick='delete_shortcut(" + x + ")' /><i class='fa fa-trash-o'></i></a></td></tr>";		
-				new_node.innerHTML = new_txt;							
-				document.getElementById("shortcut_data").appendChild(new_node);
-				document.getElementById("function").value = "";
-				document.getElementById("shortcut").value = "";
-				location.href = "#shortcut" + x; 
-				result("Success!",1500);		
-			}			
-		}
-	}
-	xmlhttp.open("GET", add_url, false);
-	xmlhttp.send();
+/*clear extra spaces*/
+function trim(str){
+	return str.replace(/(^\s*)|(\s*$)/g,'');
 }
