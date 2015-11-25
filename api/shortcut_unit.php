@@ -6,9 +6,9 @@
 	
 	if ($action == "add"){	
 		$i = $_GET['id'];
-		$g = $_GET['group'];
-		$f = $_GET['function'];
-		$s = $_GET['shortcut'];
+		$g = addslashes($_GET['group']);
+		$f = addslashes($_GET['function']);
+		$s = addslashes($_GET['shortcut']);
 		
 		$u = $_COOKIE['username'];
 		$result = mysql_query("INSERT INTO shortcut_data (shortcut_id,group_name,function,key_input,added_by) VALUES('$i','$g','$f','$s','$u')");
@@ -24,9 +24,9 @@
 	}
 	else if ($action == "update"){	
 		$i = $_GET['id'];
-		$g = $_GET['group'];
-		$f = $_GET['function'];
-		$s = $_GET['shortcut'];
+		$g = addslashes($_GET['group']);
+		$f = addslashes($_GET['function']);
+		$s = addslashes($_GET['shortcut']);
 		$u = $_COOKIE['username'];
 		$result = mysql_query("UPDATE shortcut_data SET group_name = '$g',function = '$f',key_input = '$s',added_by='$u' WHERE id = '$i'");
 		if ($result){
