@@ -1,22 +1,25 @@
 <?php
 	
-	$pw = $_COOKIE['password'];
-	
 	include 'connect.php';
 	
-	/*check password first*/
-	$check_password = mysql_query("SELECT username FROM admin_account WHERE password LIKE '$pw'");
-	$account_match = mysql_num_rows($check_password);
+	$pw = $_COOKIE['password'];
 	$username = "";
-	if($account_match == 0){
-		echo "<script>";
-		echo "location.href='login.php'";
-		echo "</script>";
+	
+	/*check password first*/
+	if(strlen($pw) == 0){
+		echo "<script>location.href='login.php'</script>";
 	}
 	else{
-		$row = mysql_fetch_array($check_password);
-		$username = $row['username'];
-		setcookie("username", $username, time()+3600);
+		$check_password = mysql_query("SELECT username FROM admin_account WHERE password LIKE '$pw'");
+		$account_match = mysql_num_rows($check_password);
+		if($account_match == 0){
+			echo "<script>location.href='login.php'</script>";
+		}
+		else{
+			$row = mysql_fetch_array($check_password);
+			$username = $row['username'];
+			setcookie("username", $username, time()+3600);
+		}
 	}
 
 	echo "<html lang='zh-cn'>";

@@ -166,6 +166,11 @@ a:visited {
 .function_sc {
 	display: inline-block;
 	min-width: 200px;
+	max-width: 350px;
+/*
+	text-overflow: ellipsis;
+	overflow: scroll;
+*/
 	color: rgb(31, 36, 41);
 }
 .function_recom {
@@ -174,6 +179,13 @@ a:visited {
 .key_sc {
 	color: rgb(172, 178, 183);
 	float: right;
+/*
+	display: inline-block;
+	max-width: 180px;
+	text-overflow: ellipsis;
+	overflow: scroll;
+*/
+
 }
 .return_sc {
 	float: right;
