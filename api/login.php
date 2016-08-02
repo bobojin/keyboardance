@@ -12,7 +12,7 @@
 	
 	echo "\t<div style='text-align:center;padding-top:120px'>\n";
 	echo "\t\t<h3>后台登录</h3><br />\n";
-	echo "\t\t<span>密码:&nbsp;</span><input type='text' id='password' name='password' placeholder='请输入密码' />&nbsp;<input type='button' value='登录' onclick='login()' />\n";
+	echo "\t\t<span>密码:&nbsp;</span><input type='text' id='password' name='password' placeholder='请输入密码' onkeypress='if(event.keyCode==13) {btn.click();return false;}' />&nbsp;<input type='button' id='btn' value='登录' onclick='login()' />\n";
 	echo "\t</div>\n";
 	
 	echo "</body>\n";

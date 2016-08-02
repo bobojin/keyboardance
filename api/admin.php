@@ -7,13 +7,13 @@
 	
 	/*check password first*/
 	if(strlen($pw) == 0){
-		echo "<script>location.href='login.php'</script>";
+		echo "<script>location.href='login.php?status=failed'</script>";
 	}
 	else{
 		$check_password = mysql_query("SELECT username FROM admin_account WHERE password LIKE '$pw'");
 		$account_match = mysql_num_rows($check_password);
 		if($account_match == 0){
-			echo "<script>location.href='login.php'</script>";
+			echo "<script>location.href='login.php?status=failed'</script>";
 		}
 		else{
 			$row = mysql_fetch_array($check_password);
