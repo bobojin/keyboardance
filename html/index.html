@@ -6,21 +6,22 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 	    <meta name="description" content="keyboardance.com">
 	    <link rel="icon" href="../favicon.ico">
-	    <title>KeyboarDance.COM</title>
+	    <title>Keyboardance.COM</title>
 	    <link href="../css/bootstrap.css" rel="stylesheet">
 		<link href="css/test.css" rel="stylesheet">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     </head>
     <body>
 	    <div class="header">
 		    <div class="website_name"><h1>Keyboardance.COM</h1></div>
 		</div>
-		<div class="menu_container">
-			<div class="menu">
+		<div class="menu" id="navigator">
+			<div class="content_center">
 				<div class="entry">
-					<li><a href="">Hot</a></li>
-					<li><a href="">Product Manager</a></li>
-					<li><a href="">UI</a></li>
-					<li><a href="">RD</a></li>
+						<li class="entry_active"><a href="">Hot</a></li>
+						<li><a href="">Product Manager</a></li>
+						<li><a href="">UI</a></li>
+						<li><a href="">RD</a></li>
 				</div>
 				<div class="search">
 					<form action="search.php" method="post">
@@ -32,7 +33,46 @@
 				</div>
 			</div>
 		</div>
-		<div class="container">
+		<div class="clearfix"></div>
+		<div class="data" id="data">
+			<div class="content_center">
+				<div class="shortcut"><img src="img/logo/github.png" class="logo" /><span class="shortcut_name">GitHub</span></div>
+				<div class="shortcut"><img src="img/logo/github.png" class="logo" /><span class="shortcut_name">GitHub</span></div>
+				<div class="shortcut"><img src="img/logo/github.png" class="logo" /><span class="shortcut_name">GitHub</span></div>
+				<div class="shortcut"><img src="img/logo/github.png" class="logo" /><span class="shortcut_name">GitHub</span></div>
+				<div class="shortcut"><img src="img/logo/github.png" class="logo" /><span class="shortcut_name">GitHub</span></div>
+				<div class="shortcut"><img src="img/logo/github.png" class="logo" /><span class="shortcut_name">GitHub</span></div>
+				<div class="shortcut"><img src="img/logo/github.png" class="logo" /><span class="shortcut_name">GitHub</span></div>
+				<div class="shortcut"><img src="img/logo/github.png" class="logo" /><span class="shortcut_name">GitHub</span></div>
+				<div class="shortcut"><img src="img/logo/github.png" class="logo" /><span class="shortcut_name">GitHub</span></div>
+				<div class="shortcut"><img src="img/logo/github.png" class="logo" /><span class="shortcut_name">GitHub</span></div>
+				<div class="shortcut"><img src="img/logo/github.png" class="logo" /><span class="shortcut_name">GitHub</span></div>
+				<div class="shortcut"><img src="img/logo/github.png" class="logo" /><span class="shortcut_name">GitHub</span></div>
+				<div class="shortcut"><img src="img/logo/github.png" class="logo" /><span class="shortcut_name">GitHub</span></div>
+				<div class="shortcut"><img src="img/logo/github.png" class="logo" /><span class="shortcut_name">GitHub</span></div>
+				<div class="shortcut"><img src="img/logo/github.png" class="logo" /><span class="shortcut_name">GitHub</span></div>
+				<div class="shortcut"><img src="img/logo/github.png" class="logo" /><span class="shortcut_name">GitHub</span></div>
+			</div>
 		</div>
+		<div class="clearfix"></div>
+		<div class="footer"></div>
+
+		<script>
+			$().ready(function(){
+			    var _defautlTop = $("#navigator").offset().top;
+			    var _position = $("#navigator").css('position');
+			    var _top = $("#navigator").css('top');
+			    $(window).scroll(function(){
+			        if($(this).scrollTop() > _defautlTop){
+			            $("#navigator").css({'position':'fixed','top':0});
+			            $("#data").css({'margin-top':55});
+			        }else{
+			            $("#navigator").css({'position':_position,'top':_top});
+			            $("#data").css({'margin-top':0});
+			        }
+			    });
+			});
+		</script>
+	
 	</body>
 </html>
