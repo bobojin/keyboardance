@@ -8,6 +8,7 @@
 	    <link rel="icon" href="../favicon.ico">
 	    <title>Keyboardance.COM</title>
 	    <link href="../css/bootstrap.css" rel="stylesheet">
+	    <link href="../css/font-awesome.css" rel="stylesheet">
 		<link href="css/test.css" rel="stylesheet">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     </head>
@@ -24,10 +25,10 @@
 						<li><a href="">RD</a></li>
 				</div>
 				<div class="search">
-					<form action="search.php" method="post">
+					<form action="search.php" name="search" method="post">
 						<div class="input-group input-group-sm">
 							<input type="text" class="form-control" placeholder="Please input keywords...">
-							<span class="input-group-addon" id="search_button">Search</span>
+							<span class="input-group-addon" id="search_button" onclick="search.submit()" ><i class="fa fa-search"></i></span>
 						</div>
 					</form>
 				</div>
@@ -36,22 +37,91 @@
 		<div class="clearfix"></div>
 		<div class="data" id="data">
 			<div class="content_center">
-				<div class="shortcut"><img src="img/logo/github.png" class="logo" /><span class="shortcut_name">GitHub</span></div>
-				<div class="shortcut"><img src="img/logo/github.png" class="logo" /><span class="shortcut_name">GitHub</span></div>
-				<div class="shortcut"><img src="img/logo/github.png" class="logo" /><span class="shortcut_name">GitHub</span></div>
-				<div class="shortcut"><img src="img/logo/github.png" class="logo" /><span class="shortcut_name">GitHub</span></div>
-				<div class="shortcut"><img src="img/logo/github.png" class="logo" /><span class="shortcut_name">GitHub</span></div>
-				<div class="shortcut"><img src="img/logo/github.png" class="logo" /><span class="shortcut_name">GitHub</span></div>
-				<div class="shortcut"><img src="img/logo/github.png" class="logo" /><span class="shortcut_name">GitHub</span></div>
-				<div class="shortcut"><img src="img/logo/github.png" class="logo" /><span class="shortcut_name">GitHub</span></div>
-				<div class="shortcut"><img src="img/logo/github.png" class="logo" /><span class="shortcut_name">GitHub</span></div>
-				<div class="shortcut"><img src="img/logo/github.png" class="logo" /><span class="shortcut_name">GitHub</span></div>
-				<div class="shortcut"><img src="img/logo/github.png" class="logo" /><span class="shortcut_name">GitHub</span></div>
-				<div class="shortcut"><img src="img/logo/github.png" class="logo" /><span class="shortcut_name">GitHub</span></div>
-				<div class="shortcut"><img src="img/logo/github.png" class="logo" /><span class="shortcut_name">GitHub</span></div>
-				<div class="shortcut"><img src="img/logo/github.png" class="logo" /><span class="shortcut_name">GitHub</span></div>
-				<div class="shortcut"><img src="img/logo/github.png" class="logo" /><span class="shortcut_name">GitHub</span></div>
-				<div class="shortcut"><img src="img/logo/github.png" class="logo" /><span class="shortcut_name">GitHub</span></div>
+				<div class="shortcut">
+					<img src="img/logo/github.png" class="logo" />
+					<span class="shortcut_name">GitHub</span>
+					<span class="shortcut_rate">
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+					</span>
+					<span class="shortcut_count">64 set of Shortcuts</span>
+				</div>
+				<div class="shortcut">
+					<img src="img/logo/github.png" class="logo" />
+					<span class="shortcut_name">GitHub</span>
+					<span class="shortcut_rate">
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+						<i class="fa fa-star"></i>
+					</span>
+					<span class="shortcut_count">64 set of Shortcuts</span>
+				</div>
+				<div class="shortcut">
+					<img src="img/logo/github.png" class="logo" />
+					<span class="shortcut_name">GitHub</span>
+					<span class="shortcut_rate">
+						<i class="fa fa-star"></i>
+					</span>
+					<span class="shortcut_count">64 set of Shortcuts</span>
+				</div>
+				<div class="shortcut">
+					<img src="img/logo/github.png" class="logo" />
+					<span class="shortcut_name">GitHub</span>
+					<span class="shortcut_rate">
+						<i class="fa fa-star"></i>
+					</span>
+					<span class="shortcut_count">64 set of Shortcuts</span>
+				</div>
+								<div class="shortcut">
+					<img src="img/logo/github.png" class="logo" />
+					<span class="shortcut_name">GitHub</span>
+					<span class="shortcut_rate">
+						<i class="fa fa-star"></i>
+					</span>
+					<span class="shortcut_count">64 set of Shortcuts</span>
+				</div>
+				<div class="shortcut">
+					<img src="img/logo/github.png" class="logo" />
+					<span class="shortcut_name">GitHub</span>
+					<span class="shortcut_rate">
+						<i class="fa fa-star"></i>
+					</span>
+					<span class="shortcut_count">64 set of Shortcuts</span>
+				</div>
+				<div class="shortcut">
+					<img src="img/logo/github.png" class="logo" />
+					<span class="shortcut_name">GitHub</span>
+					<span class="shortcut_rate">
+						<i class="fa fa-star"></i>
+					</span>
+					<span class="shortcut_count">64 set of Shortcuts</span>
+				</div>
+				<div class="shortcut">
+					<img src="img/logo/github.png" class="logo" />
+					<span class="shortcut_name">GitHub</span>
+					<span class="shortcut_rate">
+						<i class="fa fa-star"></i>
+					</span>
+					<span class="shortcut_count">64 set of Shortcuts</span>
+				</div>
+				<div class="shortcut">
+					<img src="img/logo/github.png" class="logo" />
+					<span class="shortcut_name">GitHub</span>
+					<span class="shortcut_rate">
+						<i class="fa fa-star"></i>
+					</span>
+					<span class="shortcut_count">64 set of Shortcuts</span>
+				</div>
+				<div class="shortcut">
+					<img src="img/logo/github.png" class="logo" />
+					<span class="shortcut_name">GitHub</span>
+					<span class="shortcut_rate">
+						<i class="fa fa-star"></i>
+					</span>
+					<span class="shortcut_count">64 set of Shortcuts</span>
+				</div>
 			</div>
 		</div>
 		<div class="clearfix"></div>
