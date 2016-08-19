@@ -35,6 +35,7 @@ body {
 }
 
 .entry {
+	display: block;
 	float: left;
 	padding-top: 12px;
 }
@@ -55,6 +56,11 @@ body {
 .entry_active {
 	color: white;
 	background-color: #444;	
+}
+.result {
+	display: none;
+	float: left;
+	padding-top: 12px;
 }
 .search {
 	float: right;
@@ -92,6 +98,10 @@ body {
 	text-align: center;
 	margin-top: 10px;
 	font-size: 18px;
+}
+.shortcut_name a {
+	color: #373a3c;
+	text-decoration: none;
 }
 .shortcut_rate {
 	display: block;
